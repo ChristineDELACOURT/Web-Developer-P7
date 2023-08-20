@@ -6,7 +6,7 @@ import DarkLogo from '../../assets/dark-logo.png'
 import { useTheme } from '../../utils/hooks'
 
 const HomeLogo = styled.img`
-  height: 40px;
+  height: 68px;
 `
 const NavContainer = styled.nav`
   padding: 30px;
@@ -29,9 +29,6 @@ function Header() {
         </StyledLink>
         <StyledLink $theme={theme} to="/freelances">
           A-Propos
-        </StyledLink>
-        <StyledLink to="/survey/1" $isFullLink>
-          Faire le test
         </StyledLink>
       </div>
     </NavContainer>

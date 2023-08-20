@@ -30,7 +30,6 @@ export const StyledLink = styled(Link)`
   padding: 10px 15px;
   color: ${({ $theme }) => ($theme === 'light' ? '#ff6060' : '#ffffff')};
   text-decoration: none;
-  font-size: 18px;
   text-align: center;
   ${(props) =>
     props.$isFullLink &&

@@ -3,13 +3,13 @@ import { useTheme } from '../hooks'
 
 const StyledGlobalStyle = createGlobalStyle`
     * {
-      font-family: 'Trebuchet MS', Helvetica, sans-serif;
+      font-family: Montserrat, Helvetica, sans-serif;
     }
 
     body {
+        margin: 0 5% 0 5%;
         background-color: ${(props) =>
           props.isDarkMode ? '#2F2E41' : 'white'};
-        margin: 0;
     }
 `
 

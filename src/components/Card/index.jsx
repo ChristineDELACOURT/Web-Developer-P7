@@ -3,48 +3,49 @@ import styled from 'styled-components'
 import colors from '../../utils/style/colors'
 // import { useTheme } from '../../utils/hooks'
 import logementList from '../../datas/logementList.json'
-import DefaultPicture from '../../assets/profile.png'
+import DefaultPicture from '../../assets/image-mer-desktop.png'
 
-const CardLabel = styled.span`
-  color: ${({ theme }) => (theme === 'light' ? colors.primary : '#ffffff')};
-  font-size: 22px;
-  font-weight: normal;
-  padding-left: 15px;
+const CardWrapper = styled.div`
+  height: 340px;
+  width: 340px;
+  padding: 0px;
+  position:relative;
+  z-index:2;
+  border-radius: 10px;
+  background: linear-gradient(transparent, transparent 60%, black);
+  &:hover {
+    cursor: pointer;
+  }
 `
 
-const CardTitle = styled.span`
-  color:'#ffffff';
-  font-size: 22px;
-  font-weight: normal;
-  align-self: center;
+const CardTitle = styled.h2`
+  width: 170px;
+  color:#ffffff;
+  padding-left: 10px;
+  font-size: 18px;
+  font-weight: 600;
+  align-self: left;
+  text-decoration:none;
+  position:absolute;
+  bottom:0px;
 `
 
 const CardImage = styled.img`
   height: 340px;
   width: 340px;
+  border-radius: 10px;
+  object-fit: cover;
   align-self: center;
-  border-radius: 5%;
+  position:absolute;
+  z-index:-1;
 `
 
-const CardWrapper = styled.div`
-  display: flex;
-  flex-direction: column;
-  justify-content: space-around;
-  padding: 15px;
-  background-color: ${({ theme }) =>
-    theme === 'light' ? colors.backgroundLight : colors.backgroundDark};
-  border-radius: 30px;
-  width: 300px;
-  height: 300px;
-  &:hover {
-    cursor: pointer;
-  }
-`
+
 function Card({ title, cover}) {
   return (
     <CardWrapper>
+      <CardImage src={cover} alt="Photo logement" />
       <CardTitle>{title}</CardTitle>
-      <CardImage src={cover} alt="Photo appartement" /> 
     </CardWrapper>
   )
 }
@@ -52,6 +53,7 @@ function Card({ title, cover}) {
 
 Card.propTypes = {
   title: PropTypes.string.isRequired,
+  cover: PropTypes.string.isRequired,
 }
 
 Card.defaultProps = {

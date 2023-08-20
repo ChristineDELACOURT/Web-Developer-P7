@@ -1,6 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import Card from '../../components/Card'
+import Banner from '../../components/Banner'
 import styled from 'styled-components'
 import colors from '../../utils/style/colors'
 // import { Loader } from '../../utils/style/Atoms'
@@ -10,58 +11,30 @@ import logementList from '../../datas/logementList.json'
 import imageMer from '../../assets/image-mer-desktop.png'
 
 const PageContainer = styled.div`
+  width:100%;
   display: flex;
   flex-wrap: wrap;
-  gap: 24px;
-  align-items: center;
-  justify-items: center;
 `
 const CardsContainer = styled.div`
+  background:#f6f6f6;
   display: flex;
   flex-wrap: wrap;
-  gap: 24px;
-  align-items: center;
-  justify-items: center;
+  border-radius:10px;
+  padding: 44px;
+  justify-content: space-around;
+  gap: 68px;
 `
-
-const PageTitle = styled.h1`
-  width:100%;
-  border-radius:0.8em;
-  background: url('../../assets/image-mer-desktop.png');
-  height: 223px;
-  font-size: 30px;
-  text-align: center;
-  padding-bottom: 30px;
-  color: ${({ theme }) => (theme === 'light' ? '#000000' : '#ffffff')};
-  color:#fff000;
-`
-
-//const PageSubtitle = styled.h2`
-//  font-size: 20px;
-//  color: ${colors.secondary};
-//  font-weight: 300;
-//  text-align: center;
-//  padding-bottom: 30px;
-//  color: ${({ theme }) => (theme === 'light' ? '#000000' : '#ffffff')};
-//`
-
-//const LoaderWrapper = styled.div`
-//  display: flex;
-//  justify-content: center;
-//`
 
 const ListeLogements = () => {
-  const { theme } = useTheme()
   return (
     <PageContainer>
-      <PageTitle theme={theme}>Chez vous, partout et ailleurs</PageTitle>
+      <Banner title='Chez vous, partout et ailleurs' cover={imageMer} />
         <CardsContainer>
               {logementList.map((card) => {      
         return (
           <article key={card.id}>
             <Link to={`/card/${card.id}`}>
               <Card title={card.title} cover={card.cover}  />
-  
             </Link>
           </article>
         );
