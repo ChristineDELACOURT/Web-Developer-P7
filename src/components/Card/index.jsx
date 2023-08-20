@@ -1,8 +1,5 @@
 import PropTypes from 'prop-types'
 import styled from 'styled-components'
-import colors from '../../utils/style/colors'
-// import { useTheme } from '../../utils/hooks'
-import logementList from '../../datas/logementList.json'
 import DefaultPicture from '../../assets/image-mer-desktop.png'
 
 const CardWrapper = styled.div`
@@ -16,6 +13,14 @@ const CardWrapper = styled.div`
   &:hover {
     cursor: pointer;
   }
+`
+const CardOmbre = styled.div`
+  width: 340px;
+  height:60px;
+  position:absolute;
+  bottom:0px;
+  z-index:7;
+  background: linear-gradient(to bottom, transparent 0%, hsla(0,0%,0%,.9) 100%);
 `
 
 const CardTitle = styled.h2`
@@ -45,7 +50,9 @@ function Card({ title, cover}) {
   return (
     <CardWrapper>
       <CardImage src={cover} alt="Photo logement" />
-      <CardTitle>{title}</CardTitle>
+      <CardOmbre>
+        <CardTitle>{title}</CardTitle>
+      </CardOmbre>
     </CardWrapper>
   )
 }
