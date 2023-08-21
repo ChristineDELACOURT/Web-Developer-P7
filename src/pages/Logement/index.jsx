@@ -1,122 +1,159 @@
-import { useContext } from 'react'
-import { useParams } from 'react-router-dom'
-import { Link } from 'react-router-dom'
-import styled from 'styled-components'
-import colors from '../../utils/style/colors'
-import { Loader } from '../../utils/style/Atoms'
-import { SurveyContext } from '../../utils/context'
-import { useFetch, useTheme } from '../../utils/hooks'
+import { useContext } from 'react';
+import { useParams } from 'react-router-dom';
+import { Link } from 'react-router-dom';
+import styled from 'styled-components';
+// Import des composants
+import AffichageListe from '../../components/AffichageListe';
+import AffichageTableau from '../../components/AffichageTableau';
+import Photos from '../../components/Photos';
+import Rating from '../../components/Rating';
+import colors from '../../utils/style/colors';
+import { Loader } from '../../utils/style/Atoms';
+import { SurveyContext } from '../../utils/context';
+import { useFetch, useTheme } from '../../utils/hooks';
 const logementList = require('../../datas/logementList');
 
-const SurveyContainer = styled.div`
+
+
+  
+
+const PageContainer = styled.div`
+  width:100%;
   display: flex;
-  flex-direction: column;
-  align-items: center;
+  flex-wrap: wrap;
 `
 
-const QuestionTitle = styled.h2`
-  text-decoration: underline;
-  text-decoration-color: ${colors.primary};
-  color: ${({ theme }) => (theme === 'light' ? '#000000' : '#ffffff')};
+const TitreAvisContainer = styled.div`
+width:100%;
+display: flex;
+justify-content: space-between;
+flex-wrap: wrap;
+`
+const TitreContainer = styled.div`
+max-width:70%;
+display:flex;
+flex-direction:column;
+flex-wrap: wrap;
+`
+const AvisContainer = styled.div`
+display: flex;
+flex-direction:column;
+flex-wrap: wrap;
+`
+const IdentiteContainer = styled.div`
+display: flex;
+flex-wrap: wrap;
+justify-content: space-between;
+align-items:center;
 `
 
-const QuestionContent = styled.span`
-  margin: 30px;
-  color: ${({ theme }) => (theme === 'light' ? '#000000' : '#ffffff')};
+const Titre = styled.h1`
+font-size: 36px;
+line-height:51px;
+`
+const SousTitre = styled.h2`
+font-size: 18px;
+line-height:26px;
 `
 
-const LinkWrapper = styled.div`
-  padding-top: 30px;
-  & a {
-    color: ${({ theme }) => (theme === 'light' ? '#000000' : '#ffffff')};
-  }
-  & a:first-of-type {
-    margin-right: 20px;
-  }
+const Host = styled.h4`
+font-size: 18px;
+line-height:26px;
+`
+const Picture = styled.img`
+width:52px;
+height:52px;
+border-radius:50%;
 `
 
-const ReplyBox = styled.button`
-  border: none;
-  height: 100px;
-  width: 300px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  background-color: ${({ theme }) =>
-    theme === 'light' ? colors.backgroundLight : colors.backgroundDark};
-  color: ${({ theme }) => (theme === 'light' ? '#000000' : '#ffffff')};
-  border-radius: 30px;
-  cursor: pointer;
-  box-shadow: ${(props) =>
-    props.isSelected ? `0px 0px 0px 2px ${colors.primary} inset` : 'none'};
-  &:first-child {
-    margin-right: 15px;
-  }
-  &:last-of-type {
-    margin-left: 15px;
-  }
+const DescriptionEquipementsContainer = styled.div`
+width:100%;
+display:flex;
+justify-content: space-between;
+flex-wrap:wrap;
+`
+const DescriptionContainer = styled.div`
+width:46%;
+display: flex;
+flex-direction:column;
+justify-content: flex-start;
+flex-wrap: wrap;
+`
+const EquipementsContainer = styled.div`
+width:46%;
+display: flex;
+flex-direction:column;
+justify-content: flex-start;
+flex-wrap: wrap;
+`
+const TitreDescriptionEquipementsContainer = styled.h2`
+height:26px;
+font-size: 18px;
+weight:500;
+line-height:26px;
+border-radius:10px;
+background-color:${colors.primary};
+color: ${colors.secondary};
+margin:0;
+padding:13px 20px;
+`
+const TexteDescription = styled.h2`
+font-size: 18px;
+weight:500;
+line-height:26px;
 `
 
-const ReplyWrapper = styled.div`
-  display: flex;
-  flex-direction: row;
-`
 
-function Survey() {
-  const { questionNumber } = useParams()
-  const questionNumberInt = parseInt(questionNumber)
-  const prevQuestionNumber = questionNumberInt === 1 ? 1 : questionNumberInt - 1
-  const nextQuestionNumber = questionNumberInt + 1
-  const { theme } = useTheme()
-
-  const { saveAnswers, answers } = useContext(SurveyContext)
-
-  function saveReply(answer) {
-    saveAnswers({ [questionNumber]: answer })
-  }
-  const { data, isLoading, error } = useFetch(`http://localhost:8000/survey`)
-  const surveyData = data?.surveyData
-
-  if (error) {
-    return <span>Oups il y a eu un problème</span>
-  }
-
+const Logement = () => {
+  //on recherche d'id du logement dans l'url de la page
+  var url = document.location.href; 
+  let idLogement = 0;
+  var mots = url.split('/logement/');
+  idLogement = mots[1];
+  console.log('idLogement ' + idLogement)
+  let logement = logementList.find(card => card.id === idLogement);
+  console.log('logement = ' , logement)
   return (
-    <SurveyContainer>
-      <QuestionTitle theme={theme}>Question {questionNumber}</QuestionTitle>
-      {isLoading ? (
-        <Loader />
-      ) : (
-        <QuestionContent theme={theme}>
-          {surveyData[questionNumber]}
-        </QuestionContent>
-      )}
-      <ReplyWrapper>
-        <ReplyBox
-          onClick={() => saveReply(true)}
-          isSelected={answers[questionNumber] === true}
-          theme={theme}
-        >
-          Oui
-        </ReplyBox>
-        <ReplyBox
-          onClick={() => saveReply(false)}
-          isSelected={answers[questionNumber] === false}
-          theme={theme}
-        >
-          Non
-        </ReplyBox>
-      </ReplyWrapper>
-      <LinkWrapper theme={theme}>
-        <Link to={`/survey/${prevQuestionNumber}`}>Précédent</Link>
-        {surveyData && surveyData[questionNumberInt + 1] ? (
-          <Link to={`/survey/${nextQuestionNumber}`}>Suivant</Link>
-        ) : (
-          <Link to="/results">Résultats</Link>
-        )}
-      </LinkWrapper>
-    </SurveyContainer>
-  )
-}
+    <PageContainer>                   
+      <Photos slides={logement.pictures} />
+      <TitreAvisContainer>
+        <TitreContainer>
+          <Titre>{logement.title}</Titre>
+          <SousTitre>{logement.location}</SousTitre>
+          <AffichageListe props={logement.tags}></AffichageListe>
+        </TitreContainer>
+        <AvisContainer>
+          <IdentiteContainer>
+            <Host>{logement.host.name}</Host>
+            <Picture src={logement.host.picture} alt="Photo propriétaire"  />
+          </IdentiteContainer>
+          <Rating props={logement.rating}></Rating>
+        </AvisContainer>
+      </TitreAvisContainer>
 
-export default Survey
+      <DescriptionEquipementsContainer>
+        <DescriptionContainer>
+          <TitreDescriptionEquipementsContainer>
+            Description
+          </TitreDescriptionEquipementsContainer>
+          <TexteDescription>
+            {logement.description}
+          </TexteDescription>
+        </DescriptionContainer>
+        <EquipementsContainer>
+          <TitreDescriptionEquipementsContainer>
+            Equipements
+          </TitreDescriptionEquipementsContainer>
+          <AffichageTableau props={logement.equipments}>
+          </AffichageTableau>
+        </EquipementsContainer>
+      </DescriptionEquipementsContainer>
+
+    </PageContainer>
+  )
+};
+
+export default Logement;
+
+
+

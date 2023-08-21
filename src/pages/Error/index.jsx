@@ -1,7 +1,6 @@
 import styled from 'styled-components'
 import colors from '../../utils/style/colors'
 import { useTheme } from '../../utils/hooks'
-import ErrorIllustration from '../../assets/404.svg'
 
 const ErrorWrapper = styled.div`
   margin: 30px;
@@ -13,17 +12,14 @@ const ErrorWrapper = styled.div`
 `
 
 const ErrorTitle = styled.h1`
-  color: ${({ theme }) => (theme === 'light' ? '#000000' : '#ffffff')};
+  color: #ff6060;
   font-weight: 300;
 `
 
-const ErrorSubtitle = styled.h2`
-  color: ${({ theme }) => (theme === 'light' ? colors.secondary : '#ffffff')};
-  font-weight: 300;
-`
-
-const Illustration = styled.img`
-  max-width: 800px;
+const ErrorNumber = styled.p`
+  color: #ff6060;
+  font-size:288px;
+  font-weight:700;
 `
 
 function Error() {
@@ -31,11 +27,10 @@ function Error() {
 
   return (
     <ErrorWrapper theme={theme}>
-      <ErrorTitle theme={theme}>Oups...</ErrorTitle>
-      <Illustration src={ErrorIllustration} />
-      <ErrorSubtitle theme={theme}>
-        La page que vous demandez n’existe pas
-      </ErrorSubtitle>
+      <ErrorNumber>404</ErrorNumber>
+      <ErrorTitle theme={theme}>
+        Oups! La page que vous demandez n’existe pas
+      </ErrorTitle>
     </ErrorWrapper>
   )
 }

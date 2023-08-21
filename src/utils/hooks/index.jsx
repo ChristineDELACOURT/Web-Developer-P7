@@ -1,5 +1,5 @@
 import { useState, useEffect, useContext } from 'react'
-import { ThemeContext } from '../context'
+import { ThemeContext, DisplayContext } from '../context'
 
 export function useFetch(url) {
   const [data, setData] = useState({})
@@ -29,4 +29,9 @@ export function useFetch(url) {
 export function useTheme() {
   const { theme, toggleTheme } = useContext(ThemeContext)
   return { theme, toggleTheme }
+}
+
+export function useDisplay() {
+  const { display, toggleDisplay } = useContext(DisplayContext)
+  return { display, toggleDisplay }
 }

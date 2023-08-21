@@ -1,11 +1,11 @@
 import React from 'react'
-import ReactDOM from 'react-dom'
+import ReactDOM from 'react-dom/client'
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom'
 //import des 4 pages du site
 import Home from './pages/Home'
 import Apropos from './pages/Apropos'
 import Logement from './pages/Logement'
-import Erreur from './pages/Erreur'
+import Error from './pages/Error'
 //import des header et footer
 import Header from './components/Header'
 import Footer from './components/Footer'
@@ -24,9 +24,9 @@ root.render(
           <Header />
           <Routes>
             <Route path="/" element={<Home />} />
-            <Route path="/logement/:index" element={<Logement />} />
+            <Route path="/logement/:id" element={<Logement />} />
             <Route path="/apropos" element={<Apropos />} />
-            <Route path="*" element={<Erreur />} />
+            <Route path="*" element={<Error />} />
           </Routes>
         </SurveyProvider>
         <Footer />

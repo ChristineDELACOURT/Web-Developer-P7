@@ -1,7 +1,6 @@
 import PropTypes from 'prop-types'
 import styled from 'styled-components'
-// import colors from '../../utils/style/colors'
-// import { useTheme } from '../../utils/hooks'
+import colors from '../../utils/style/colors'
 import DefaultPicture from '../../assets/image-mer-desktop.png'
 
 const BannerWrapper = styled.div`
@@ -19,7 +18,7 @@ const BannerTitle = styled.h1`
   font-size: 30px;
   text-align: center;
   top:-160px;
-  color:#ffffff;
+  color:${colors.secondary};
 `
 const BannerImage = styled.img`
   width:100%;
@@ -39,7 +38,6 @@ function Banner({ title, cover}) {
     </BannerWrapper>
   )
 }
-
 
 Banner.propTypes = {
   title: PropTypes.string.isRequired,

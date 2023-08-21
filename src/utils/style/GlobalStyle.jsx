@@ -4,6 +4,9 @@ import { useTheme } from '../hooks'
 const StyledGlobalStyle = createGlobalStyle`
     * {
       font-family: Montserrat, Helvetica, sans-serif;
+      font-style: Monserrat;
+      color:#ff6060;
+      weight:500;
     }
 
     body {

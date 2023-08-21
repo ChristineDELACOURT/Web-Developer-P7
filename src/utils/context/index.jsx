@@ -29,3 +29,18 @@ export const SurveyProvider = ({ children }) => {
     </SurveyContext.Provider>
   )
 }
+
+export const DisplayContext = createContext()
+
+export const DisplayProvider = ({ children }) => {
+  const [display, setDisplay] = useState('none')
+  const toggleDisplay = () => {
+    setDisplay(display === 'none' ? 'content' : 'none')
+  }
+
+  return (
+    <DisplayContext.Provider value={{ display, toggleDisplay }}>
+      {children}
+    </DisplayContext.Provider>
+  )
+}

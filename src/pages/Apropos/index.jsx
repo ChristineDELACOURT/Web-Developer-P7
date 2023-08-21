@@ -2,7 +2,6 @@ import styled from 'styled-components'
 import colors from '../../utils/style/colors'
 import { StyledLink } from '../../utils/style/Atoms'
 import { useTheme } from '../../utils/hooks'
-import HomeIllustration from '../../assets/home-illustration.svg'
 
 const HomeWrapper = styled.div`
   display: flex;
@@ -36,9 +35,6 @@ const StyledTitle = styled.h2`
   color: ${({ theme }) => (theme === 'light' ? '#000000' : '#ffffff')};
 `
 
-const Illustration = styled.img`
-  flex: 1;
-`
 
 function Home() {
   const { theme } = useTheme()
@@ -55,7 +51,6 @@ function Home() {
             Faire le test
           </StyledLink>
         </LeftCol>
-        <Illustration src={HomeIllustration} />
       </HomerContainer>
     </HomeWrapper>
   )

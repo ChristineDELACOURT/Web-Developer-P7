@@ -17,6 +17,7 @@ const CardWrapper = styled.div`
 const CardOmbre = styled.div`
   width: 340px;
   height:60px;
+  border-radius: 10px;
   position:absolute;
   bottom:0px;
   z-index:7;

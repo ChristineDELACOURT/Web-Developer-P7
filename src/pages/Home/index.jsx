@@ -16,7 +16,7 @@ const PageContainer = styled.div`
   flex-wrap: wrap;
 `
 const CardsContainer = styled.div`
-  background:#f6f6f6;
+  background:${colors.ternary};
   display: flex;
   flex-wrap: wrap;
   border-radius:10px;
@@ -33,7 +33,7 @@ const ListeLogements = () => {
               {logementList.map((card) => {      
         return (
           <article key={card.id}>
-            <Link to={`/card/${card.id}`}>
+            <Link to={`/logement/${card.id}`}>
               <Card title={card.title} cover={card.cover}  />
             </Link>
           </article>
