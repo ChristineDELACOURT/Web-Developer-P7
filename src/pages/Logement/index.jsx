@@ -7,6 +7,8 @@ import AffichageListe from '../../components/AffichageListe';
 import AffichageTableau from '../../components/AffichageTableau';
 import Photos from '../../components/Photos';
 import Rating from '../../components/Rating';
+import Collapse from '../../components/Collapse';
+// Import de differents styles
 import colors from '../../utils/style/colors';
 import { Loader } from '../../utils/style/Atoms';
 import { SurveyContext } from '../../utils/context';
@@ -72,20 +74,7 @@ display:flex;
 justify-content: space-between;
 flex-wrap:wrap;
 `
-const DescriptionContainer = styled.div`
-width:46%;
-display: flex;
-flex-direction:column;
-justify-content: flex-start;
-flex-wrap: wrap;
-`
-const EquipementsContainer = styled.div`
-width:46%;
-display: flex;
-flex-direction:column;
-justify-content: flex-start;
-flex-wrap: wrap;
-`
+
 const TitreDescriptionEquipementsContainer = styled.h2`
 height:26px;
 font-size: 18px;
@@ -97,12 +86,6 @@ color: ${colors.secondary};
 margin:0;
 padding:13px 20px;
 `
-const TexteDescription = styled.h2`
-font-size: 18px;
-weight:500;
-line-height:26px;
-`
-
 
 const Logement = () => {
   //on recherche d'id du logement dans l'url de la page
@@ -132,21 +115,15 @@ const Logement = () => {
       </TitreAvisContainer>
 
       <DescriptionEquipementsContainer>
-        <DescriptionContainer>
-          <TitreDescriptionEquipementsContainer>
-            Description
-          </TitreDescriptionEquipementsContainer>
-          <TexteDescription>
-            {logement.description}
-          </TexteDescription>
-        </DescriptionContainer>
-        <EquipementsContainer>
-          <TitreDescriptionEquipementsContainer>
-            Equipements
-          </TitreDescriptionEquipementsContainer>
-          <AffichageTableau props={logement.equipments}>
-          </AffichageTableau>
-        </EquipementsContainer>
+        <Collapse
+                title="Description"
+                content={logement?.description}
+              />
+
+              <Collapse
+                title="Equipements"
+                content={logement?.equipments}
+              />
       </DescriptionEquipementsContainer>
 
     </PageContainer>
