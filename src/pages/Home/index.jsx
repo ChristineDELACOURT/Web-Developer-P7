@@ -8,7 +8,7 @@ import colors from '../../utils/style/colors'
 // import { useFetch, useTheme } from '../../utils/hooks'
 import { useTheme } from '../../utils/hooks'
 import logementList from '../../datas/logementList.json'
-import imageMer from '../../assets/image-mer-desktop.png'
+import imageMer from '../../assets/image_mer_desktop.png'
 
 const PageContainer = styled.div`
   width:100%;

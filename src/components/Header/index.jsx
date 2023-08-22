@@ -27,7 +27,7 @@ function Header() {
         <StyledLink $theme={theme} to="/">
           Accueil
         </StyledLink>
-        <StyledLink $theme={theme} to="/freelances">
+        <StyledLink $theme={theme} to="/Apropos">
           A-Propos
         </StyledLink>
       </div>

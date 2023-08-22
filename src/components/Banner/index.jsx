@@ -1,7 +1,7 @@
 import PropTypes from 'prop-types'
 import styled from 'styled-components'
 import colors from '../../utils/style/colors'
-import DefaultPicture from '../../assets/image-mer-desktop.png'
+import DefaultPicture from '../../assets/image_mer_desktop.png'
 
 const BannerWrapper = styled.div`
   width:100%;

@@ -45,6 +45,7 @@ flex-wrap: wrap;
 const IdentiteContainer = styled.div`
 display: flex;
 flex-wrap: wrap;
+gap:10px;
 justify-content: space-between;
 align-items:center;
 `
@@ -73,19 +74,17 @@ width:100%;
 display:flex;
 justify-content: space-between;
 flex-wrap:wrap;
+gap:20px;
+`
+const CollapseContainer = styled.div`
+  width:46%;
+  display: flex;
+  flex-direction:column;
+  justify-content:flex-start;
+  align-items:center;
+  flex-wrap: wrap;
 `
 
-const TitreDescriptionEquipementsContainer = styled.h2`
-height:26px;
-font-size: 18px;
-weight:500;
-line-height:26px;
-border-radius:10px;
-background-color:${colors.primary};
-color: ${colors.secondary};
-margin:0;
-padding:13px 20px;
-`
 
 const Logement = () => {
   //on recherche d'id du logement dans l'url de la page
@@ -115,15 +114,18 @@ const Logement = () => {
       </TitreAvisContainer>
 
       <DescriptionEquipementsContainer>
+      <CollapseContainer>
         <Collapse
-                title="Description"
-                content={logement?.description}
-              />
-
-              <Collapse
-                title="Equipements"
-                content={logement?.equipments}
-              />
+          title="Description"
+          content={logement?.description}
+        />
+        </CollapseContainer>
+        <CollapseContainer>
+        <Collapse
+          title="Equipements"
+          content={logement?.equipments}
+        />
+        </CollapseContainer>
       </DescriptionEquipementsContainer>
 
     </PageContainer>

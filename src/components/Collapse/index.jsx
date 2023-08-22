@@ -4,7 +4,7 @@ import colors from '../../utils/style/colors';
 import AffichageTableau from '../../components/AffichageTableau';
 
 const Container = styled.div`
-width:46%;
+width:100%;
 display: flex;
 flex-direction:column;
 justify-content: flex-start;
@@ -45,45 +45,42 @@ padding: 20px 0;
 `
 
 const Collapse = ({ title, content }) => {
-  //declaration du state en utilisant le Hook useState()
-  const [isOpen, setIsOpen] = useState(false); // je definie le state du toggle (et false par défaut)
+  // utilisation de useState
+  const [switchDisplay, setSwitchDisplay] = useState(false); // je definie le state du toggle (et false par défaut)
   var contentType = typeof(content);
-  console.log('typeof({content}) ',typeof(content));
-  console.log('contentType ' ,contentType);
-  //fonction pour gérer l'afichage du contenu des collapses
+  console.log('contentType l51' ,contentType);
+  // switchDisplay sera true ou false à chaque appel de display
   const display = () => {
-    setIsOpen(!isOpen);
+    setSwitchDisplay(!switchDisplay);
   };
-
+  console.log('switchDisplay' ,switchDisplay);
   return (
-    // affiche le collapse replié par défaut et l'ouvre au clic puis le referme au clic en faisant disparaitre le texte et le style
+    // le commentaire s'ouvre et se ferme à chaque onClick
     <Container>
       <TitreDescriptionEquipementsContainer>
         <Titre>{title}</Titre>
         <Chevron onClick={display}>
-          {isOpen ? (
+          {switchDisplay ? (
             <i className="fa-solid fa-chevron-up" style={{color:'#ffffff'}}></i>
           ) : (
             <i className="fa-solid fa-chevron-down" style={{color:'#ffffff'}}></i>
           )}
         </Chevron>
       </TitreDescriptionEquipementsContainer>
-      {/* Si le collapse est à TRUE alors il affichera la description */}
+      
       <ContenuContainer>
-      {(isOpen && (contentType === 'string'))? (
-              
-                  <Contenu>{content}</Contenu>
+      {(switchDisplay && (contentType === 'string'))? (    
+        <Contenu>{content}</Contenu>
         ):(<div></div>)   
       }
-      {(isOpen && (contentType !== 'string'))? (
-                <AffichageTableau props={content}></AffichageTableau>
+      {(switchDisplay && (contentType !== 'string'))? (
+        <AffichageTableau props={content}></AffichageTableau>
         ):(<div></div>)   
       }
-         
       </ContenuContainer>
     </Container>
   );
   
 };
-// isOpen && (typeof({content}) === 'string')
+
 export default Collapse;

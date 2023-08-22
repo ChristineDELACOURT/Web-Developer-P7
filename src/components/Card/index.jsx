@@ -1,6 +1,6 @@
 import PropTypes from 'prop-types'
 import styled from 'styled-components'
-import DefaultPicture from '../../assets/image-mer-desktop.png'
+import DefaultPicture from '../../assets/image_mer_desktop.png'
 
 const CardWrapper = styled.div`
   height: 340px;

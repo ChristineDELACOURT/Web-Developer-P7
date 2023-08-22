@@ -1,59 +1,66 @@
+import React from "react";
+import { Link } from "react-router-dom";
+import Card from '../../components/Card'
+import Banner from '../../components/Banner'
+import Collapse from '../../components/Collapse';
 import styled from 'styled-components'
 import colors from '../../utils/style/colors'
-import { StyledLink } from '../../utils/style/Atoms'
+// import { Loader } from '../../utils/style/Atoms'
+// import { useFetch, useTheme } from '../../utils/hooks'
 import { useTheme } from '../../utils/hooks'
+import aPropos from '../../datas/aPropos.json'
+import imageMontagne from '../../assets/image_montagne_desktop.png'
 
-const HomeWrapper = styled.div`
+const PageContainer = styled.div`
+  width:100%;
   display: flex;
-  justify-content: center;
+  flex-direction:column;
+  justify-content:space-between;
+  align-items:center;
+  flex-wrap: wrap;
 `
-
-const HomerContainer = styled.div`
-  margin: 30px;
-  background-color: ${({ theme }) =>
-    theme === 'light' ? colors.backgroundLight : colors.backgroundDark};
-  padding: 60px 90px;
+const CollapseContainer = styled.div`
+  width:80%;
   display: flex;
-  flex-direction: row;
-  max-width: 1200px;
+  flex-direction:column;
+  justify-content:center;
+  align-items:center;
+  flex-wrap: wrap;
 `
+// Récupération des commentaires dans le fichier aPropos.json
+//const listCommentaires = aPropos.map((commentaire) => commentaire);
+const listCommentaires = require('../../datas/aPropos.json');
+console.log('listCommentaires ',listCommentaires);
+const fiabilite = listCommentaires.fiabilite;
+const respect = listCommentaires.respect;
+const service = listCommentaires.service;
+const securite = listCommentaires.securite;
 
-const LeftCol = styled.div`
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  flex: 1;
-  ${StyledLink} {
-    max-width: 250px;
-  }
-`
-
-const StyledTitle = styled.h2`
-  padding-bottom: 30px;
-  max-width: 280px;
-  line-height: 50px;
-  color: ${({ theme }) => (theme === 'light' ? '#000000' : '#ffffff')};
-`
-
-
-function Home() {
-  const { theme } = useTheme()
-
+const Apropos = () => {
   return (
-    <HomeWrapper>
-      <HomerContainer theme={theme}>
-        <LeftCol>
-          <StyledTitle theme={theme}>
-            Repérez vos besoins, on s’occupe du reste, avec les meilleurs
-            talents
-          </StyledTitle>
-          <StyledLink to="/survey/1" $isFullLink>
-            Faire le test
-          </StyledLink>
-        </LeftCol>
-      </HomerContainer>
-    </HomeWrapper>
-  )
-}
+    <PageContainer>
+      <Banner title='' cover={imageMontagne} />
+      <CollapseContainer>
+      <Collapse
+          title="Fiabilité" 
+          content={fiabilite}
+        />
+        <Collapse
+          title="Respect" 
+          content={respect}
+        />
+        <Collapse
+          title="Service" 
+          content={service}
+        />
+        <Collapse
+          title="Sécurité" 
+          content={securite}
+        />
+        </CollapseContainer>
+    </PageContainer>
 
-export default Home
+  );
+};
+
+export default Apropos;
