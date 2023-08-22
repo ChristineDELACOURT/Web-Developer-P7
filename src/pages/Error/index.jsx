@@ -1,6 +1,7 @@
 import styled from 'styled-components'
 import colors from '../../utils/style/colors'
 import { useTheme } from '../../utils/hooks'
+import { Link } from "react-router-dom";
 
 const ErrorWrapper = styled.div`
   margin: 30px;
@@ -31,6 +32,11 @@ function Error() {
       <ErrorTitle theme={theme}>
         Oups! La page que vous demandez n’existe pas
       </ErrorTitle>
+      <div>
+        <Link $theme={theme} to="/">
+          Retourner sur la page d'accueil
+        </Link>
+      </div>
     </ErrorWrapper>
   )
 }
