@@ -6,7 +6,6 @@ import AffichageListe from '../../components/AffichageListe';
 import Photos from '../../components/Photos';
 import Rating from '../../components/Rating';
 import Collapse from '../../components/Collapse';
-import Error from '../Error';
 // Import du loader
 //import { Loader } from '../../utils/style/Atoms';
 const logementList = require('../../datas/logementList');
@@ -84,32 +83,38 @@ const CollapseContainer = styled.div`
 `
 
 function Logement () {
-  // On recherche d'id du logement dans l'url de la page
-  const url = useParams().id;
-  var logement;
-  // On liste les url valides
+  //on recherche d'id du logement dans l'url de la page
+  const url = useParams();
+  const navigate = useNavigate();
+  const [valide,setValide] = useState(false);
   let listeId = logementList.map((card) => {
     return (      
       card.id
     )
   })
-    console.log('listeId = ' , listeId);
-    console.log('url= ' , url);
+  console.log('listeId = ' , listeId);
+  let logement = logementList.find(card => card.id === url.id); 
+  useEffect(() => {
     console.log('listeId dans useEffect= ' , listeId);
-    console.log('listeId.indexOf(url)= ' , listeId.indexOf(url));
-    console.log('listeId.indexOf(url) === -1 : ' , listeId.indexOf(url) === -1);
-    logement = logementList.find(card => card.id === url);
-      if (listeId.indexOf(url) === -1 ) {
-        return <Error />;
-      }else{
-    return (
+    console.log('listeId.indexOf(url.id)= ' , listeId.indexOf(url.id));
+    console.log('listeId.indexOf(url.id) === -1 : ' , listeId.indexOf(url.id) === -1);
+    if (( listeId.indexOf(url.id) === -1 )) {
+      navigate("/Error", { state: { message: "Can't get data" } }); //renvoi vers la page 404 en cas d'URL de logement invalide  
+    };
+  }, []);
+  
+  //if (typeof(logement.title) === 'undefined') {
+  //  return console.log('probleme logement = ' , logement)
+  //}
+  //console.log('logement = ' , logement)
+  return (
     <PageContainer>                   
       <Photos album={logement.pictures} />
       <TitreAvisContainer>
         <TitreContainer>
           <Titre>{logement.title}</Titre>
           <SousTitre>{logement.location}</SousTitre>
-          <AffichageListe liste={logement.tags}></AffichageListe>
+          <AffichageListe tags={logement.tags}></AffichageListe>
         </TitreContainer>
         <AvisContainer>
           <IdentiteContainer>
@@ -134,9 +139,9 @@ function Logement () {
         />
         </CollapseContainer>
       </DescriptionEquipementsContainer>
+
     </PageContainer>
   )
-};
 };
 
 export default Logement;

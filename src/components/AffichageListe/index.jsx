@@ -23,12 +23,12 @@ vertical-align:center;
 padding: 0px 5px;
 `
 
-function AffichageListe({tags}) {
-  console.log('props tableau ' , tags)
+function AffichageListe({liste}) {
+  console.log('props tableau ' , liste)
   
     return (
-      <TagContainer key={tags[0]}>
-        {tags.map((tag,index) => {
+      <TagContainer key={liste[0]}>
+        {liste.map((tag,index) => {
           return (
             <TagStyle key={index}>{tag}</TagStyle>
           );
