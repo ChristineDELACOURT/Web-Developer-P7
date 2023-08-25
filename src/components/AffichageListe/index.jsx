@@ -24,7 +24,7 @@ padding: 0px 5px;
 `
 
 function AffichageListe({liste}) {
-  console.log('props tableau ' , liste)
+  console.log('liste ' , liste)
   
     return (
       <TagContainer key={liste[0]}>

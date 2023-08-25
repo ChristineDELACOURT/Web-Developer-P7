@@ -1,5 +1,5 @@
-import React, { useState , useEffect} from "react";
-import { useParams, useNavigate } from 'react-router-dom';
+import React from "react";
+import { useParams } from 'react-router-dom';
 import styled from 'styled-components';
 // Import des composants
 import AffichageListe from '../../components/AffichageListe';
@@ -99,6 +99,7 @@ function Logement () {
     console.log('listeId.indexOf(url)= ' , listeId.indexOf(url));
     console.log('listeId.indexOf(url) === -1 : ' , listeId.indexOf(url) === -1);
     logement = logementList.find(card => card.id === url);
+    // Si l url n'est pas valide on renvoie sur la page Error (404)
       if (listeId.indexOf(url) === -1 ) {
         return <Error />;
       }else{

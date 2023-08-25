@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import styled from 'styled-components';
 import PropTypes from 'prop-types';
+import colors from '../../utils/style/colors';
 
 const AlbumContainer = styled.div`
   width:100%;
@@ -48,12 +49,19 @@ function Photos({ album }) {
   return ( 
       <AlbumContainer style={{ 
         backgroundImage:`url("${image}")`}}>
+
+      {(nombrePhotos > 1)? (    
         <ChevronLeft onClick={imagePrecedante}>
-          <i className="fa-solid fa-chevron-left" style={{color:'#ffffff'}}></i>
+          <i className="fa-solid fa-chevron-left" style={{color:colors.secondary}}></i>
         </ChevronLeft>
+        ):(<div></div>)   
+      }
+      {(nombrePhotos > 1)? (    
         <ChevronRight onClick={imageSuivante}>
-          <i className="fa-solid fa-chevron-right" style={{color:'#ffffff'}}></i>
-        </ChevronRight>     
+          <i className="fa-solid fa-chevron-right" style={{color:colors.secondary}}></i>
+        </ChevronRight> 
+        ):(<div></div>)
+      }      
         </AlbumContainer>
         );
       }
