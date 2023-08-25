@@ -1,6 +1,9 @@
 import React, { useState } from "react";
 import styled from 'styled-components';
+import PropTypes from 'prop-types';
+// import des paramètres
 import colors from '../../utils/style/colors';
+// Import des composants
 import AffichageTableau from '../../components/AffichageTableau';
 
 const Container = styled.div`
@@ -11,6 +14,7 @@ justify-content: flex-start;
 flex-wrap: wrap;
 `
 
+// Container contenant les 2 collapses
 const TitreDescriptionEquipementsContainer = styled.div`
 display:flex;
 justify-content:space-between;
@@ -23,6 +27,7 @@ margin:0;
 
 const Titre = styled.h2`
 font-size: 18px;
+weight:400;
 line-height:26px;
 color: ${colors.secondary};
 margin:0;
@@ -39,23 +44,22 @@ padding: 5px 0;
 
 const Contenu = styled.p`
 font-size: 18px;
+weight:400;
 line-height:26px;
 margin:0;
 padding: 20px 0;
 `
-
-const Collapse = ({ title, content }) => {
-  // utilisation de useState
-  const [switchDisplay, setSwitchDisplay] = useState(false); // je definie le state du toggle (et false par défaut)
+function Collapse({ title, content}) {
+  // on met l etat de switchDisplay à false par défaut
+  const [switchDisplay, setSwitchDisplay] = useState(false);
   var contentType = typeof(content);
-  console.log('contentType l51' ,contentType);
   // switchDisplay sera true ou false à chaque appel de display
-  const display = () => {
+  function display () {
     setSwitchDisplay(!switchDisplay);
   };
-  console.log('switchDisplay' ,switchDisplay);
+  // A chaque onClick, le chevron change de sens
+  // et le texte apparaît ou disparaît
   return (
-    // le commentaire s'ouvre et se ferme à chaque onClick
     <Container>
       <TitreDescriptionEquipementsContainer>
         <Titre>{title}</Titre>
@@ -74,7 +78,7 @@ const Collapse = ({ title, content }) => {
         ):(<div></div>)   
       }
       {(switchDisplay && (contentType !== 'string'))? (
-        <AffichageTableau props={content}></AffichageTableau>
+        <AffichageTableau tableau={content}></AffichageTableau>
         ):(<div></div>)   
       }
       </ContenuContainer>
@@ -82,5 +86,21 @@ const Collapse = ({ title, content }) => {
   );
   
 };
+
+// La props content eput être soit un tableau ou une ListeLogements.
+// Elle sera affichée différemment selon le cas :
+// --> Contenu : affichage d une liste
+// --> AffichageTableau : affichage d un tableau
+
+
+// Propriété de la props title
+Collapse.propTypes = {
+  title: PropTypes.string.isRequired,
+}
+
+// Valeurs par défaut de la props title
+Collapse.defaultProps = {
+  title: '',
+}
 
 export default Collapse;

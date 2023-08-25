@@ -1,25 +1,26 @@
 import { createGlobalStyle } from 'styled-components'
-import { useTheme } from '../hooks'
+import colors from './colors'
 
 const StyledGlobalStyle = createGlobalStyle`
     * {
       font-family: Montserrat, Helvetica, sans-serif;
-      font-style: Monserrat;
-      color:#ff6060;
+      font-style: "Monserrat";
+      color:${colors.primary};
       weight:500;
+      margin:0;
+      padding:0;
     }
 
     body {
         margin: 0 5% 0 5%;
-        background-color: ${(props) =>
-          props.isDarkMode ? '#2F2E41' : 'white'};
+        background-color: ${colors.ternary};
     }
+  }
 `
 
 function GlobalStyle() {
-  const { theme } = useTheme()
 
-  return <StyledGlobalStyle isDarkMode={theme === 'dark'} />
+  return <StyledGlobalStyle isDarkMode='false' />
 }
 
 export default GlobalStyle

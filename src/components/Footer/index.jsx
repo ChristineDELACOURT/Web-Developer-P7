@@ -1,17 +1,16 @@
-import { useTheme } from '../../utils/hooks'
-import styled from 'styled-components'
-import colors from '../../utils/style/colors'
-import LightLogo from '../../assets/light-logo.png'
-import DarkLogo from '../../assets/dark-logo.png'
+import styled from 'styled-components';
+import colors from '../../utils/style/colors';
+import Logo from '../../assets/dark-logo.png';
 
 const FooterContainer = styled.footer`
   width:100%;
+  height:169px;
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: center;
-  padding-top: 60px;
-  background:black;
+  justify-content: space-around;
+  padding-top:40px;
+  background:${colors.quaternary};
 `
 const FooterLogo = styled.img`
   height:40px;
@@ -21,27 +20,16 @@ const FooterTitle = styled.h5`
   weight:500;
   font-size: 24px;
   text-align: center;
-  color:#ffffff;
-`
-
-const NightModeButton = styled.button`
-  background-color: transparent;
-  border: none;
-  cursor: pointer;
-  color: ${colors.secondary};
+  line-height:35px;
+  color:${colors.secondary};
 `
 
 function Footer() {
-  const { toggleTheme, theme } = useTheme()
-
   return (
     <FooterContainer>
-      <FooterLogo src={theme === 'light' ? DarkLogo : LightLogo }/>
+      <FooterLogo src={Logo}/>
       <FooterTitle>© 2020 Kasa. All rights reserved
       </FooterTitle>
-      <NightModeButton onClick={() => toggleTheme()}>
-        Changer de mode : {theme === 'light' ? '☀️' : '🌙'}
-      </NightModeButton>
     </FooterContainer>
   )
 }

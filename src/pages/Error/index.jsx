@@ -1,42 +1,36 @@
-import styled from 'styled-components'
-import colors from '../../utils/style/colors'
-import { useTheme } from '../../utils/hooks'
+import styled from 'styled-components';
 import { Link } from "react-router-dom";
 
 const ErrorWrapper = styled.div`
-  margin: 30px;
   display: flex;
   flex-direction: column;
-  background-color: ${({ theme }) =>
-    theme === 'light' ? colors.backgroundLight : colors.backgroundDark};
-  align-items: center;
+  height:calc(100% - 252px);
+    align-items: center;
 `
-
-const ErrorTitle = styled.h1`
-  color: #ff6060;
-  font-weight: 300;
-`
-
-const ErrorNumber = styled.p`
-  color: #ff6060;
+const ErrorNumber = styled.h1`
   font-size:288px;
   font-weight:700;
+  margin:0;
+`
+const ErrorTitle = styled.h2`
+  font-size: 36px;
+`
+
+const StyledLink = styled(Link)`
+  font-size: 18px;
+  line-height:26px;
 `
 
 function Error() {
-  const { theme } = useTheme()
-
   return (
-    <ErrorWrapper theme={theme}>
+    <ErrorWrapper>
       <ErrorNumber>404</ErrorNumber>
-      <ErrorTitle theme={theme}>
+      <ErrorTitle>
         Oups! La page que vous demandez n’existe pas
       </ErrorTitle>
-      <div>
-        <Link $theme={theme} to="/">
+        <StyledLink to="/">
           Retourner sur la page d'accueil
-        </Link>
-      </div>
+        </StyledLink>
     </ErrorWrapper>
   )
 }

@@ -1,53 +1,69 @@
 import React, { useState } from "react";
+import styled from 'styled-components';
+import PropTypes from 'prop-types';
 
-function Photos({ slides }) {
-  /* Crée un Hook d'état */
-  const [current, setCurrent] = useState(0); //je définie l'index du premier slide à 0
-  const length = slides.length; //longueur du tableau de slides
+const AlbumContainer = styled.div`
+  width:100%;
+  height:415px;
+  display: flex;
+  justify-content:space-between;
+  align-items:center;
+  flex-wrap: wrap;
+  background-size: cover;
+  background-position: center;
+  border-radius: 25px;
+`
+const ChevronLeft = styled.p`
+  margin-left: 20px;
+  font-size: 80px;
+`
 
-  /**Function pour l'image precedente */
-  const nextImage = () => {
-    setCurrent(current === length - 1 ? 0 : current + 1); // on repart au premier slide quand on arrive au dernier
-  };
-  /**Function pour l'image suivante */
-  const prevImage = () => {
-    setCurrent(current === 0 ? length - 1 : current - 1); // on repart au dernier slide quand on est au premier
-  };
+const ChevronRight = styled.div`
+margin-right: 20px;
+  font-size: 80px;
+`
 
-  if (!Array.isArray(slides) || slides.length <= 0) {
+function Photos({ album }) {
+  // l'état de la première photo est 0
+  const [actuelle, setProchaine] = useState(0); 
+  // nombre de photos dans l'album
+  const nombrePhotos =  album.length; 
+  // Si album n'est pas un tableau ou qu'il est vide on arrête
+  if (!Array.isArray(album) || nombrePhotos < 1) {
     return null;
   }
-  return (
-    <section className="slide">
-      {length > 1 && (
-        <p className="left-Arrow" onClick={prevImage}>
-          <i className="fa-solid fa-chevron-left"></i>
-        </p>
-      )}
-      {length > 1 && (
-        <p className="right-Arrow" onClick={nextImage}>
-          <i className="fa-solid fa-chevron-right"></i>
-        </p>
-      )}
-      {slides.map((image, index) => {
-        return (
-          <div
-            key={index}
-            className={index === current ? "slider active" : "slider"}
-          >
-            {index === current && (
-              <img src={image} alt="img-appartement" className="slide__image" />
-            )}
-            {index === current && length > 1 && (
-              <span className="slider__number">
-                {current + 1}/{length}
-              </span>
-            )}
-          </div>
+  // L opérateur modulo est utilisé pour boucler sur les images
+  // l image suivante repasse à l image de depart si l album est fini
+  const imageSuivante = () => {
+    setProchaine((actuelle + 1 ) % nombrePhotos);
+  };
+  // l image precedante repassse a l'image de fin si on est au debut de l'album
+  const imagePrecedante = () => {
+    setProchaine((nombrePhotos + actuelle - 1 ) % nombrePhotos);
+  };
+  console.log('nombrePhotos : ' , nombrePhotos)
+  var image = album[actuelle];
+  console.log('image : ' , image)
+  
+  return ( 
+      <AlbumContainer style={{ 
+        backgroundImage:`url("${image}")`}}>
+        <ChevronLeft onClick={imagePrecedante}>
+          <i className="fa-solid fa-chevron-left" style={{color:'#ffffff'}}></i>
+        </ChevronLeft>
+        <ChevronRight onClick={imageSuivante}>
+          <i className="fa-solid fa-chevron-right" style={{color:'#ffffff'}}></i>
+        </ChevronRight>     
+        </AlbumContainer>
         );
-      })}
-    </section>
-  );
+      }
+
+Photos.propTypes = {
+  album: PropTypes.array.isRequired,
+}
+
+Photos.defaultProps = {
+  album: [],
 }
 
 export default Photos;

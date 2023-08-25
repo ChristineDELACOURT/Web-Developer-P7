@@ -1,14 +1,11 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import Card from '../../components/Card'
-import Banner from '../../components/Banner'
-import styled from 'styled-components'
-import colors from '../../utils/style/colors'
-// import { Loader } from '../../utils/style/Atoms'
-// import { useFetch, useTheme } from '../../utils/hooks'
-import { useTheme } from '../../utils/hooks'
-import logementList from '../../datas/logementList.json'
-import imageMer from '../../assets/image_mer_desktop.png'
+import Card from '../../components/Card';
+import Banner from '../../components/Banner';
+import styled from 'styled-components';
+import colors from '../../utils/style/colors';
+import logementList from '../../datas/logementList.json';
+import imageMer from '../../assets/image_mer_desktop.png';
 
 const PageContainer = styled.div`
   width:100%;
@@ -25,7 +22,7 @@ const CardsContainer = styled.div`
   gap: 68px;
 `
 
-const ListeLogements = () => {
+function ListeLogements () {
   return (
     <PageContainer>
       <Banner title='Chez vous, partout et ailleurs' cover={imageMer} />

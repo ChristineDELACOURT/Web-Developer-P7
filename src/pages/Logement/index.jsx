@@ -1,23 +1,13 @@
-import { useContext } from 'react';
 import { useParams } from 'react-router-dom';
-import { Link } from 'react-router-dom';
 import styled from 'styled-components';
 // Import des composants
 import AffichageListe from '../../components/AffichageListe';
-import AffichageTableau from '../../components/AffichageTableau';
 import Photos from '../../components/Photos';
 import Rating from '../../components/Rating';
 import Collapse from '../../components/Collapse';
-// Import de differents styles
-import colors from '../../utils/style/colors';
-import { Loader } from '../../utils/style/Atoms';
-import { SurveyContext } from '../../utils/context';
-import { useFetch, useTheme } from '../../utils/hooks';
+// Import du loader
+//import { Loader } from '../../utils/style/Atoms';
 const logementList = require('../../datas/logementList');
-
-
-
-  
 
 const PageContainer = styled.div`
   width:100%;
@@ -26,55 +16,61 @@ const PageContainer = styled.div`
 `
 
 const TitreAvisContainer = styled.div`
-width:100%;
-display: flex;
-justify-content: space-between;
-flex-wrap: wrap;
+  width:100%;
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  margin:25px 0px;
 `
 const TitreContainer = styled.div`
-max-width:70%;
-display:flex;
-flex-direction:column;
-flex-wrap: wrap;
+  max-width:70%;
+  display:flex;
+  flex-direction:column;
+  flex-wrap: wrap;
 `
 const AvisContainer = styled.div`
-display: flex;
-flex-direction:column;
-flex-wrap: wrap;
+  display: flex;
+  flex-direction:column;
+  justify-content:space-around;
+  flex-wrap: wrap;
 `
 const IdentiteContainer = styled.div`
-display: flex;
-flex-wrap: wrap;
-gap:10px;
-justify-content: space-between;
-align-items:center;
+  display: flex;
+  flex-wrap: wrap;
+  gap:10px;
+  justify-content: space-around;
+  align-items:center;
 `
 
 const Titre = styled.h1`
-font-size: 36px;
-line-height:51px;
+  font-size: 36px;
+  line-height:51px;
 `
 const SousTitre = styled.h2`
-font-size: 18px;
-line-height:26px;
+  font-size: 18px;
+  line-height:26px;
+  margin:10px 0;
 `
 
 const Host = styled.h4`
-font-size: 18px;
-line-height:26px;
+  width:93px;
+  height:52px;
+  font-size: 12px;
+  line-height:17px;
+  text-align:right;
 `
 const Picture = styled.img`
-width:52px;
-height:52px;
-border-radius:50%;
+  width:64px;
+  height:64px;
+  border-radius:50%;
 `
 
 const DescriptionEquipementsContainer = styled.div`
-width:100%;
-display:flex;
-justify-content: space-between;
-flex-wrap:wrap;
-gap:20px;
+  width:100%;
+  display:flex;
+  justify-content: space-between;
+  flex-wrap:wrap;
+  gap:20px;
 `
 const CollapseContainer = styled.div`
   width:46%;
@@ -85,31 +81,30 @@ const CollapseContainer = styled.div`
   flex-wrap: wrap;
 `
 
-
-const Logement = () => {
+function Logement () {
   //on recherche d'id du logement dans l'url de la page
-  var url = document.location.href; 
-  let idLogement = 0;
-  var mots = url.split('/logement/');
-  idLogement = mots[1];
-  console.log('idLogement ' + idLogement)
+  const url = useParams();
+  const idLogement = url.id;
   let logement = logementList.find(card => card.id === idLogement);
-  console.log('logement = ' , logement)
+  //if (typeof(logement.title) === 'undefined') {
+  //  return console.log('probleme logement = ' , logement)
+  //}
+  //console.log('logement = ' , logement)
   return (
     <PageContainer>                   
-      <Photos slides={logement.pictures} />
+      <Photos album={logement.pictures} />
       <TitreAvisContainer>
         <TitreContainer>
           <Titre>{logement.title}</Titre>
           <SousTitre>{logement.location}</SousTitre>
-          <AffichageListe props={logement.tags}></AffichageListe>
+          <AffichageListe tags={logement.tags}></AffichageListe>
         </TitreContainer>
         <AvisContainer>
           <IdentiteContainer>
             <Host>{logement.host.name}</Host>
             <Picture src={logement.host.picture} alt="Photo propriétaire"  />
           </IdentiteContainer>
-          <Rating props={logement.rating}></Rating>
+          <Rating nombreEtoiles={logement.rating}></Rating>
         </AvisContainer>
       </TitreAvisContainer>
 

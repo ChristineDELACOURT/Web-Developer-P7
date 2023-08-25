@@ -1,15 +1,9 @@
 import React from "react";
-import { Link } from "react-router-dom";
-import Card from '../../components/Card'
-import Banner from '../../components/Banner'
+import styled from 'styled-components';
+// Import des composants
+import Banner from '../../components/Banner';
 import Collapse from '../../components/Collapse';
-import styled from 'styled-components'
-import colors from '../../utils/style/colors'
-// import { Loader } from '../../utils/style/Atoms'
-// import { useFetch, useTheme } from '../../utils/hooks'
-import { useTheme } from '../../utils/hooks'
-import aPropos from '../../datas/aPropos.json'
-import imageMontagne from '../../assets/image_montagne_desktop.png'
+import imageMontagne from '../../assets/image_montagne_desktop.png';
 
 const PageContainer = styled.div`
   width:100%;
@@ -20,15 +14,17 @@ const PageContainer = styled.div`
   flex-wrap: wrap;
 `
 const CollapseContainer = styled.div`
-  width:80%;
   display: flex;
   flex-direction:column;
   justify-content:center;
   align-items:center;
   flex-wrap: wrap;
+  width:80%;
+  gap:31px;
+  padding:31px 108px;
 `
 // Récupération des commentaires dans le fichier aPropos.json
-//const listCommentaires = aPropos.map((commentaire) => commentaire);
+// c'est in fichier json simple
 const listCommentaires = require('../../datas/aPropos.json');
 console.log('listCommentaires ',listCommentaires);
 const fiabilite = listCommentaires.fiabilite;
@@ -36,8 +32,10 @@ const respect = listCommentaires.respect;
 const service = listCommentaires.service;
 const securite = listCommentaires.securite;
 
-const Apropos = () => {
-  return (
+// On affiche 4 paragraphes fermés par défaut
+
+function Apropos () {
+    return (
     <PageContainer>
       <Banner title='' cover={imageMontagne} />
       <CollapseContainer>

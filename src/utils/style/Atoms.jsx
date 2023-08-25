@@ -28,8 +28,7 @@ export const StyledLink = styled(Link)`
   font-size: 24px;
   line-height: 34px;
   padding: 10px 15px;
-  color: ${({ $theme }) => ($theme === 'light' ? '#ff6060' : '#ffffff')};
-  text-decoration: none;
+  text-decoration: ${({ $theme }) => ($theme === 'encours' ? 'underline' : 'none')};
   text-align: center;
   ${(props) =>
     props.$isFullLink &&

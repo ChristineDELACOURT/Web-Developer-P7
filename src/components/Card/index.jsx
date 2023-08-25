@@ -1,33 +1,31 @@
-import PropTypes from 'prop-types'
-import styled from 'styled-components'
-import DefaultPicture from '../../assets/image_mer_desktop.png'
+import PropTypes from 'prop-types';
+import styled from 'styled-components';
+// Import d une image par défaut
+import DefaultPicture from '../../assets/image_mer_desktop.png';
 
 const CardWrapper = styled.div`
   height: 340px;
   width: 340px;
   padding: 0px;
   position:relative;
-  z-index:2;
+  z-index:0;
   border-radius: 10px;
-  background: linear-gradient(transparent, transparent 60%, black);
-  &:hover {
-    cursor: pointer;
-  }
 `
+// On met un léger voile noir poir augmenter le contraste avec le texte
 const CardOmbre = styled.div`
   width: 340px;
   height:60px;
   border-radius: 10px;
+  background: linear-gradient(to bottom, transparent 0%,hsla(0,0%,0%,.8) 100%);
   position:absolute;
   bottom:0px;
-  z-index:7;
-  background: linear-gradient(to bottom, transparent 0%, hsla(0,0%,0%,.9) 100%);
+  z-index:1;
 `
 
 const CardTitle = styled.h2`
-  width: 170px;
+  width: 200px;
   color:#ffffff;
-  padding-left: 10px;
+  padding: 10px;
   font-size: 18px;
   font-weight: 600;
   align-self: left;
@@ -43,9 +41,8 @@ const CardImage = styled.img`
   object-fit: cover;
   align-self: center;
   position:absolute;
-  z-index:-1;
+  z-index:1;
 `
-
 
 function Card({ title, cover}) {
   return (
@@ -58,12 +55,13 @@ function Card({ title, cover}) {
   )
 }
 
-
+// Propriété des props title et cover
 Card.propTypes = {
   title: PropTypes.string.isRequired,
   cover: PropTypes.string.isRequired,
 }
 
+// Valeurs par défaut des props title et cover
 Card.defaultProps = {
   title: '',
   cover: DefaultPicture,

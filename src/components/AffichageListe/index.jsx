@@ -1,17 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
-import PropTypes from 'prop-types'
-import colors from '../../utils/style/colors'
-
-const TagStyle = styled.h3`
-font-size: 14px;
-line-height:20px;
-border-radius:10px;
-background-color:${colors.primary};
-color: ${colors.secondary};
-text-align:center;
-padding: 5px 20px;
-`
+import PropTypes from 'prop-types';
+import colors from '../../utils/style/colors';
 
 const TagContainer = styled.div`
 width:100%;
@@ -20,12 +10,25 @@ display:flex;
 flex-direction:flex-start;
 `
 
-function AffichageListe({props} : { props : Array }) {
-  console.log('props tableau ' , props)
+const TagStyle = styled.h3`
+min-width:115px;
+height:25px;
+font-size: 14px;
+line-height:20px;
+border-radius:10px;
+background-color:${colors.primary};
+color: ${colors.secondary};
+text-align:center;
+vertical-align:center;
+padding: 0px 5px;
+`
+
+function AffichageListe({tags}) {
+  console.log('props tableau ' , tags)
   
     return (
-      <TagContainer key={props[0]}>
-        {props.map((tag,index) => {
+      <TagContainer key={tags[0]}>
+        {tags.map((tag,index) => {
           return (
             <TagStyle key={index}>{tag}</TagStyle>
           );
@@ -34,15 +37,22 @@ function AffichageListe({props} : { props : Array }) {
   );
 };
 
-
-
+// Propriété de la props tags
+AffichageListe.propTypes = {
+  tags: PropTypes.array,
+}
 
 TagStyle.propTypes = {
   tag: PropTypes.string,
 }
 
+// Valeur par défaut de la props tags
+AffichageListe.defaultProps = {
+  tags: [],
+}
+
 TagStyle.defaultProps = {
-  title: '',
+  tag: '',
 }
 
 export default AffichageListe;
