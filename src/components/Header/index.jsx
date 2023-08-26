@@ -21,14 +21,14 @@ function Header() {
   // on recupere le contexte de la page
   const page = useLocation().pathname;
   // on met le style "underline" sur le lien de la page en cours
-  console.log('pathname dans header ' ,page);
+  //console.log('pathname dans header ' ,page);
   if (page ===  "/") {
     (textDecorationHome = "underline") && (textDecorationAPropos = "none")
- }else if (page ===  "/Apropos") {
+  }else if (page ===  "/Apropos") {
    (textDecorationHome = "none") && (textDecorationAPropos = "underline")
- }else{
+  }else{
    (textDecorationHome = "none") && (textDecorationAPropos = "none")
- }
+  }
   return (
     <NavContainer>
       <Link to="/">

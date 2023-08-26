@@ -1,5 +1,7 @@
-import { createGlobalStyle } from 'styled-components'
-import colors from './colors'
+import { createGlobalStyle } from 'styled-components';
+import colors from './colors';
+import { useContext } from 'react';
+import { ThemeContext } from '../../utils/context';
 
 const StyledGlobalStyle = createGlobalStyle`
     * {
@@ -10,17 +12,18 @@ const StyledGlobalStyle = createGlobalStyle`
       margin:0;
       padding:0;
     }
-
     body {
         margin: 0 5% 0 5%;
         background-color: ${colors.ternary};
     }
+
   }
 `
 
 function GlobalStyle() {
-
-  return <StyledGlobalStyle isDarkMode='false' />
+  let mobile = useContext(ThemeContext);
+  console.log('mobile dans GlobalStyle ' , mobile);
+  return <StyledGlobalStyle/>
 }
 
 export default GlobalStyle

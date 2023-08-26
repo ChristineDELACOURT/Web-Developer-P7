@@ -1,6 +1,8 @@
-import React from "react";
+import React, { useContext } from 'react'
 import { useParams } from 'react-router-dom';
 import styled from 'styled-components';
+import { ThemeContext } from '../../utils/context';
+import  { useMediaQuery }  from  'react-responsive'
 // Import des composants
 import AffichageListe from '../../components/AffichageListe';
 import Photos from '../../components/Photos';
@@ -87,26 +89,28 @@ function Logement () {
   // On recherche d'id du logement dans l'url de la page
   const url = useParams().id;
   var logement;
+  var directionflexTitreAvisContainer;
+  // On affecte les attributs en responsive
+  // Le mobile a une largeur maximum de 768px
+  var mobile = useContext(ThemeContext);
+  console.log('mobile dans Logement ' , mobile);
+  { (mobile.mobile) ? ( directionflexTitreAvisContainer = 'column' ) : (directionflexTitreAvisContainer = 'row') }
+  console.log('directionflexTitreAvisContainer ' , directionflexTitreAvisContainer);
   // On liste les url valides
   let listeId = logementList.map((card) => {
     return (      
       card.id
     )
   })
-    console.log('listeId = ' , listeId);
-    console.log('url= ' , url);
-    console.log('listeId dans useEffect= ' , listeId);
-    console.log('listeId.indexOf(url)= ' , listeId.indexOf(url));
-    console.log('listeId.indexOf(url) === -1 : ' , listeId.indexOf(url) === -1);
     logement = logementList.find(card => card.id === url);
     // Si l url n'est pas valide on renvoie sur la page Error (404)
       if (listeId.indexOf(url) === -1 ) {
         return <Error />;
       }else{
     return (
-    <PageContainer>                   
-      <Photos album={logement.pictures} />
-      <TitreAvisContainer>
+    <PageContainer>
+        <Photos album={logement.pictures} />
+        <TitreAvisContainer style={{flexDirection:directionflexTitreAvisContainer}}>
         <TitreContainer>
           <Titre>{logement.title}</Titre>
           <SousTitre>{logement.location}</SousTitre>
@@ -115,26 +119,23 @@ function Logement () {
         <AvisContainer>
           <IdentiteContainer>
             <Host>{logement.host.name}</Host>
-            <Picture src={logement.host.picture} alt="Photo propriétaire"  />
+            <Picture src={logement.host.picture} alt="Photo propriétaire" />
           </IdentiteContainer>
           <Rating nombreEtoiles={logement.rating}></Rating>
         </AvisContainer>
       </TitreAvisContainer>
-
       <DescriptionEquipementsContainer>
-      <CollapseContainer>
-        <Collapse
-          title="Description"
-          content={logement?.description}
-        />
-        </CollapseContainer>
-        <CollapseContainer>
-        <Collapse
-          title="Equipements"
-          content={logement?.equipments}
-        />
-        </CollapseContainer>
-      </DescriptionEquipementsContainer>
+          <CollapseContainer>
+            <Collapse
+              title="Description"
+              content={logement?.description} />
+          </CollapseContainer>
+          <CollapseContainer>
+            <Collapse
+              title="Equipements"
+              content={logement?.equipments} />
+          </CollapseContainer>
+        </DescriptionEquipementsContainer>
     </PageContainer>
   )
 };

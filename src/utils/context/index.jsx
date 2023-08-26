@@ -1,25 +1,14 @@
-import React, { useContext, createContext } from 'react'
-
-var textDecorationHome = "none";
-var textDecorationAPropos = "none";
+import React, { createContext } from 'react'
+import  { useMediaQuery }  from  'react-responsive'
 
 // Initialisation du contexte pour le thème
-const ThemeContext = createContext()
-
-export default ThemeContext
+export const ThemeContext = createContext()
 
 export const ThemeProvider = ({ children }) => {
-  let page = useContext(ThemeContext);
-  console.log('page dans themeContext ',page);
-  if (page ===  "localhost:3000/") {
-     (textDecorationHome = "underline") && (textDecorationAPropos = "none")
-  }else if (page ===  "localhost:3000/Apropos") {
-    (textDecorationHome = "none") && (textDecorationAPropos = "underline")
-  }else{
-    (textDecorationHome = "none") && (textDecorationAPropos = "none")
-  }
+  const mobile = useMediaQuery ( {  query : '(max-width : 768px)'  } );
+  console.log('mobile dans themeContext ',mobile);
   return (
-    <ThemeContext.Provider value={{ page , textDecorationHome , textDecorationAPropos }}>
+    <ThemeContext.Provider value={{ mobile }}>
       {children}
     </ThemeContext.Provider>
   )

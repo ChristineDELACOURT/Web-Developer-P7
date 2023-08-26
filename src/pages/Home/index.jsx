@@ -1,4 +1,6 @@
-import React from "react";
+import React , { useContext }from "react";
+import { ThemeContext } from '../../utils/context';
+import  { useMediaQuery }  from  'react-responsive'
 import { Link } from "react-router-dom";
 import Card from '../../components/Card';
 import Banner from '../../components/Banner';
@@ -23,6 +25,8 @@ const CardsContainer = styled.div`
 `
 
 function ListeLogements () {
+  var mobile = useContext(ThemeContext);
+  console.log('mobile dans Home :' , mobile);
   return (
     <PageContainer>
       <Banner title='Chez vous, partout et ailleurs' cover={imageMer} />

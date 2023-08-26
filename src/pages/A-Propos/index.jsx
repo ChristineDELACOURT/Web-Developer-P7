@@ -26,7 +26,7 @@ const CollapseContainer = styled.div`
 // Récupération des commentaires dans le fichier aPropos.json
 // c'est in fichier json simple
 const listCommentaires = require('../../datas/aPropos.json');
-console.log('listCommentaires ',listCommentaires);
+// console.log('listCommentaires ',listCommentaires);
 const fiabilite = listCommentaires.fiabilite;
 const respect = listCommentaires.respect;
 const service = listCommentaires.service;

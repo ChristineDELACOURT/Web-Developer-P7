@@ -20,8 +20,7 @@ root.render(
       <ThemeProvider>
           <GlobalStyle />
           <Header />
-          <Routes>
-            
+          <Routes>           
             <Route path="/" element={<Home />} />
             <Route path="/logement/:id" element={<Logement />} />
             <Route path="/apropos" element={<Apropos />} />

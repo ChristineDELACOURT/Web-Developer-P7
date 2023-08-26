@@ -42,9 +42,9 @@ function Photos({ album }) {
   const imagePrecedante = () => {
     setProchaine((nombrePhotos + actuelle - 1 ) % nombrePhotos);
   };
-  console.log('nombrePhotos : ' , nombrePhotos)
+  // console.log('nombrePhotos : ' , nombrePhotos)
   var image = album[actuelle];
-  console.log('image : ' , image)
+  // console.log('image : ' , image)
   
   return ( 
       <AlbumContainer style={{ 
