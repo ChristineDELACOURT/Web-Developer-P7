@@ -1,6 +1,6 @@
 import React from 'react'
 import ReactDOM from 'react-dom/client'
-import { BrowserRouter as Router, Route, Routes , Navigate} from 'react-router-dom'
+import { BrowserRouter as Router, Route, Routes } from 'react-router-dom'
 //import des 4 pages du site
 import Home from './pages/Home'
 import Apropos from './pages/A-Propos'

@@ -6,7 +6,6 @@ export const ThemeContext = createContext()
 
 export const ThemeProvider = ({ children }) => {
   const mobile = useMediaQuery ( {  query : '(max-width : 768px)'  } );
-  console.log('mobile dans themeContext ',mobile);
   return (
     <ThemeContext.Provider value={{ mobile }}>
       {children}

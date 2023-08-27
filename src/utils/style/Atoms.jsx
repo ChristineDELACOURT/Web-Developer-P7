@@ -1,6 +1,8 @@
+import { useContext } from 'react'
 import { Link } from 'react-router-dom'
 import colors from './colors'
 import styled, { keyframes } from 'styled-components'
+import { ThemeContext } from '../context';
 
 const rotate = keyframes`
   from {

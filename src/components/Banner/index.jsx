@@ -1,3 +1,5 @@
+import React , { useContext } from "react";
+import { ThemeContext } from '../../utils/context';
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
 // Import des paramètres
@@ -9,36 +11,35 @@ import DefaultPicture from '../../assets/image_mer_desktop.png';
 // BannerTitle et BannerImage
 const BannerWrapper = styled.div`
   width:100%;
-  border-radius: 30px;
-  &:hover {
-    cursor: pointer;
-  }
 `
-
 const BannerTitle = styled.h1`
-  width:100%;
+  max-width:'1240px';
   position:relative;
   z-index:1;
-  font-size: 30px;
   text-align: center;
-  top:-140px;
   color:${colors.secondary};
 `
 const BannerImage = styled.img`
   width:100%;
-  border-radius:0.8em;
-  height: 223px;
-  border-radius: 30px;
   object-fit: cover;
   align-self: center;
   filter: brightness(65%);
 `
 
 function Banner({ title, cover}) {
+  var mobile = useContext(ThemeContext);
   return (
-    <BannerWrapper>
-      <BannerImage src={cover} alt="Photo paysage" /> 
-      <BannerTitle>{title}</BannerTitle>
+    <BannerWrapper style={{height:(mobile.mobile ? '111px' : '223px')}}>
+      <BannerImage src={cover}
+        style={{ height:(mobile.mobile ? '111px' : '223px'),
+        borderRadius:(mobile.mobile ? '10px' : '30px')}} 
+        alt="Photo paysage" /> 
+      <BannerTitle style={{width:(mobile.mobile ? '220px' : '100%'),
+        fontSize:(mobile.mobile ? '24px' : '48px'),
+        lineHeight:(mobile.mobile ? '24px' : '68.45px'),
+        top:(mobile.mobile ? '-85px' : '-162px'),
+        textAlign:(mobile.mobile ? 'left' : 'center'),
+        marginLeft:(mobile.mobile ? '16px' : '0px')}}>{title}</BannerTitle>
     </BannerWrapper>
   )
 }

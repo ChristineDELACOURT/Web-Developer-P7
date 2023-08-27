@@ -1,5 +1,6 @@
-import React, { useState } from "react";
+import React, { useState , useContext } from "react";
 import styled from 'styled-components';
+import { ThemeContext } from '../../utils/context';
 import PropTypes from 'prop-types';
 // import des paramètres
 import colors from '../../utils/style/colors';
@@ -26,9 +27,6 @@ margin:0;
 `
 
 const Titre = styled.h2`
-font-size: 18px;
-weight:400;
-line-height:26px;
 color: ${colors.secondary};
 margin:0;
 padding:13px 20px;
@@ -50,6 +48,8 @@ margin:0;
 padding: 20px 0;
 `
 function Collapse({ title, content}) {
+  // On importe la taille de l'écran du contexte
+  var mobile = useContext(ThemeContext);
   // on met l etat de switchDisplay à false par défaut
   const [switchDisplay, setSwitchDisplay] = useState(false);
   var contentType = typeof(content);
@@ -62,7 +62,8 @@ function Collapse({ title, content}) {
   return (
     <Container>
       <TitreDescriptionEquipementsContainer>
-        <Titre>{title}</Titre>
+        <Titre style={{fontSize:(mobile.mobile ? '13px' : '18px'),
+          lineHeight:(mobile.mobile ? '18px' : '25.67px')}}>{title}</Titre>
         <Chevron onClick={display}>
           {switchDisplay ? (
             <i className="fa-solid fa-chevron-up" style={{color:'#ffffff'}}></i>
@@ -74,7 +75,8 @@ function Collapse({ title, content}) {
       
       <ContenuContainer>
       {(switchDisplay && (contentType === 'string'))? (    
-        <Contenu>{content}</Contenu>
+        <Contenu  style={{fontSize:(mobile.mobile ? '12px' : '17.11px'),
+        lineHeight:(mobile.mobile ? '18px' : '25.67px')}}>{content}</Contenu>
         ):(<div></div>)   
       }
       {(switchDisplay && (contentType !== 'string'))? (

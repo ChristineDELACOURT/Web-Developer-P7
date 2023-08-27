@@ -1,6 +1,8 @@
 import React from 'react';
 import styled from 'styled-components';
 import PropTypes from 'prop-types';
+import { useContext }from "react";
+import { ThemeContext } from '../../utils/context';
 
 const Liste = styled.ul`
 width:100%;
@@ -15,6 +17,8 @@ Line height:25.67px;
 `
 
 function AffichageTableau({tableau}) {
+  // On importe la taille de l'écran du contexte
+  var mobile = useContext(ThemeContext);
   console.log('props tableau ' , tableau)
     return (
       <Liste key={tableau[0]}>
