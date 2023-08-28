@@ -32,6 +32,6 @@ top:-10px;
 z-index:-1;
 `
 export const Contenu = styled.p`
-padding:20px;
+padding:40px 16px 20px 16px;
 font-weight:400;
 `
