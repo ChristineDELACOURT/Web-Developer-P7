@@ -9,6 +9,7 @@ export const FooterContainer = styled.footer`
   flex-direction: column;
   align-items: center;
   justify-content: space-around;
+  margin-top:10px;
   padding-top:40px;
   background:${colors.quaternary};
 `

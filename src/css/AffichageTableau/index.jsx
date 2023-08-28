@@ -2,13 +2,14 @@ import styled from 'styled-components';
 import colors from '../../utils/style/colors';
 
 export const Liste = styled.ul`
-background-color:${colors.ternary};
+height:189px;
+border-radius:10px;
 list-style-type: none;
-padding: 20px 16px;
+padding: 40px 16px 20px 16px;
 `
 
 export const Item = styled.li`
-Weight:400;
-Size:18px;
-Line height:25.67px;
+font-weight:400;
+font-size:78px;
+lineHeight:25.67px;
 `

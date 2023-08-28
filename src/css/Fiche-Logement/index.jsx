@@ -21,16 +21,16 @@ export const TitreContainer = styled.div`
 export const AvisContainer = styled.div`
   display: flex;
   flex-direction: column;
-  justify-content:  space-between;
-  align-items:  Scenter;
+  justify-content: space-between;
+  align-items: center;
   flex-wrap: no-wrap;
 `
 export const IdentiteContainer = styled.div`
   display: flex;
   flex-wrap: no-wrap;
-  gap:  10px;
+  gap: 10px;
   justify-content: space-around;
-  align-items:  center;
+  align-items: center;
 `
 export const Titre = styled.h1`
   font-size: 36px;

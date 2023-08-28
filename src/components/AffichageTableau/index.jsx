@@ -1,5 +1,4 @@
 import React from 'react';
-import styled from 'styled-components';
 import PropTypes from 'prop-types';
 import { useContext }from "react";
 import { ThemeContext } from '../../utils/context';
@@ -14,7 +13,7 @@ function AffichageTableau({tableau}) {
       <Liste key={tableau[0]}>
         {tableau.map((equipment) => {
           return (
-          <Item key={equipment}  style={{fontSize:(mobile.mobile ? '12px' : '17.11px'),
+          <Item key={equipment} style={{fontSize:(mobile.mobile ? '12px' : '17.11px'),
           lineHeight:(mobile.mobile ? '18px' : '25.67px')}}>{equipment}</Item>
           );
         })}

@@ -15,6 +15,7 @@ const StyledGlobalStyle = createGlobalStyle`
       min-width:320px;
       margin:0% 5%;
       background-color: ${colors.ternary};
+      min-height: 100vh;
     }
 
   }

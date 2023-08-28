@@ -1,6 +1,8 @@
 import React, { useState , useContext } from "react";
 import { ThemeContext } from '../../utils/context';
 import PropTypes from 'prop-types';
+// Imports des liens pour la navigation 
+import { useLocation} from 'react-router-dom';
 // import des paramètres
 import colors from '../../utils/style/colors';
 // Import des composants
@@ -13,6 +15,8 @@ import { Contenu } from '../../css/Collapse';
 import AffichageTableau from '../../components/AffichageTableau';
 
 function Collapse({ title, content}) {
+  // on recupere le contexte de la page (Home, A-Propos ou autre)
+  const page = useLocation().pathname;
   // On importe la taille de l'écran du contexte
   var mobile = useContext(ThemeContext);
   // on met l etat de switchDisplay à false par défaut
@@ -38,10 +42,12 @@ function Collapse({ title, content}) {
         </Chevron>
       </TitreDescriptionEquipementsContainer>
       
-      <ContenuContainer>
+      <ContenuContainer style={{borderRadius:(page ===  "/Apropos" ? '0px' : '10px')}}>
       {(switchDisplay && (contentType === 'string'))? (    
         <Contenu style={{fontSize:(mobile.mobile ? '12px' : '17.11px'),
-        lineHeight:(mobile.mobile ? '18px' : '25.67px')}}>{content}</Contenu>
+        lineHeight:(mobile.mobile ? '18px' : '25.67px'),
+        height:(page ===  "/Apropos" ? 'auto' : '209px')
+      }}>{content}</Contenu>
         ):(<div></div>)   
       }
       {(switchDisplay && (contentType !== 'string'))? (
