@@ -26,10 +26,10 @@ export const Chevron = styled.p`
 padding:10px 20px;
 `
 export const ContenuContainer = styled.div`
-background-color:${colors.ternary};
 padding: 5px 0;
 `
 export const Contenu = styled.p`
 weight:400;
+background-color:${colors.ternary};
 padding: 20px 0;
 `

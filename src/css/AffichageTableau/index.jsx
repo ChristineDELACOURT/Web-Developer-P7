@@ -1,9 +1,10 @@
 import styled from 'styled-components';
+import colors from '../../utils/style/colors';
 
 export const Liste = styled.ul`
-width:100%;
+background-color:${colors.ternary};
 list-style-type: none;
-padding: 33px 16px;
+padding: 20px 16px;
 `
 
 export const Item = styled.li`
