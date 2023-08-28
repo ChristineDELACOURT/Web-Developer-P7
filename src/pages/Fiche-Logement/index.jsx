@@ -8,81 +8,19 @@ import Photos from '../../components/Photos';
 import Rating from '../../components/Rating';
 import Collapse from '../../components/Collapse';
 import Error from '../Error';
-// Import du loader
-//import { Loader } from '../../utils/style/Atoms';
+import { PageContainer } from '../../css/Fiche-Logement';
+import { TitreAvisContainer } from '../../css/Fiche-Logement';
+import { TitreContainer } from '../../css/Fiche-Logement';
+import { AvisContainer } from '../../css/Fiche-Logement';
+import { IdentiteContainer } from '../../css/Fiche-Logement';
+import { Titre } from '../../css/Fiche-Logement';
+import { SousTitre } from '../../css/Fiche-Logement';
+import { Host } from '../../css/Fiche-Logement';
+import { Picture } from '../../css/Fiche-Logement';
+import { DescriptionEquipementsContainer } from '../../css/Fiche-Logement';
+import { CollapseContainer } from '../../css/Fiche-Logement';
+// Import de la liste des logements
 const logementList = require('../../datas/logementList');
-
-const PageContainer = styled.div`
-  width:100%;
-  display: flex;
-  flex-wrap: wrap;
-`
-
-const TitreAvisContainer = styled.div`
-  width:100%;
-  display: flex;
-  justify-content: space-between;
-  flex-wrap: wrap;
-  margin:25px 0px;
-`
-const TitreContainer = styled.div`
-  max-width:70%;
-  display:flex;
-  flex-direction:column;
-  flex-wrap: wrap;
-`
-const AvisContainer = styled.div`
-  display: flex;
-  flex-direction:column;
-  justify-content:space-between;
-  align-items:center;
-  flex-wrap: no-wrap;
-`
-const IdentiteContainer = styled.div`
-  display: flex;
-  flex-wrap: no-wrap;
-  gap:10px;
-  justify-content: space-around;
-  align-items:center;
-`
-
-const Titre = styled.h1`
-  font-size: 36px;
-  line-height:51px;
-`
-const SousTitre = styled.h2`
-  font-size: 18px;
-  line-height:26px;
-  margin:10px 0;
-`
-
-const Host = styled.h4`
-  width:93px;
-  height:52px;
-  font-size: 18px;
-  line-height:25.67px;
-  text-align:right;
-`
-const Picture = styled.img`
-  width:64px;
-  height:64px;
-  border-radius:50%;
-`
-
-const DescriptionEquipementsContainer = styled.div`
-  width:100%;
-  display:flex;
-  justify-content: space-between;
-  flex-wrap:wrap;
-  gap:20px;
-`
-const CollapseContainer = styled.div`
-  display: flex;
-  flex-direction:column;
-  justify-content:flex-start;
-  align-items:center;
-  flex-wrap: wrap;
-`
 
 function Logement () {
   // On recherche d'id du logement dans l'url de la page

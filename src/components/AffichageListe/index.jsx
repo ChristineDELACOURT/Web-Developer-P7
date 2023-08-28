@@ -1,30 +1,10 @@
 import React from 'react';
-import styled from 'styled-components';
 import PropTypes from 'prop-types';
-import colors from '../../utils/style/colors';
-
-const TagContainer = styled.div`
-  width:100%;
-  gap:10px;
-  display:flex;
-  flex-direction:flex-start;
-`
-
-const TagStyle = styled.h3`
-  min-width:115px;
-  height:22px;
-  font-size: 14px;
-  line-height:19.96px;
-  border-radius:10px;
-  background-color:${colors.primary};
-  color: ${colors.secondary};
-  text-align:center;
-  padding:3px 5px 0px 5px;
-`
+// Import des composants
+import { TagContainer } from '../../css/AffichageListe';
+import { TagStyle } from '../../css/AffichageListe';
 
 function AffichageListe({liste}) {
-  // console.log('liste ' , liste)
-  
   return (
     <TagContainer key={liste[0]}>
       {liste.map((tag,index) => {

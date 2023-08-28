@@ -1,31 +1,14 @@
 import { useContext }from "react";
-import styled from 'styled-components';
 import { ThemeContext } from '../../utils/context';
 // Imports des liens pour la navigation 
 import { Link ,  useLocation} from 'react-router-dom';
+// Import des composants
+import { HomeLogo } from '../../css/Header';
+import { LinkContainer } from '../../css/Header';
+import { NavContainer } from '../../css/Header';
+import { StyledLink } from '../../css/Header';
+// Import du logo
 import Logo from '../../assets/light-logo.png';
-
-const HomeLogo = styled.img` 
-`
-
-const LinkContainer = styled.div` 
-`
-
-const NavContainer = styled.nav`
-  padding: 30px 0px;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-`
-
-const StyledLink = styled(Link)`
-  line-height: 34px;
-  padding: 10px 15px;
-  text-align: center;
-  &:hover {
-    cursor: pointer;
-  }
-`
 
 function Header() {
   // On importe la taille de l'écran du contexte
@@ -39,7 +22,7 @@ function Header() {
         <HomeLogo src={Logo} style={{ height:(mobile.mobile ? '47px' : '68px')}}/>
       </Link>
       <LinkContainer>
-        <StyledLink style={{ textDecoration:(page ===  "/" ? 'underline' : 'none'),
+        <StyledLink style={{textDecoration:(page ===  "/" ? 'underline' : 'none'),
           fontSize:(mobile.mobile ? '12px' : '24px'),
           lineHeight:(mobile.mobile ? '17.11px' : '34.22px')}} to="/">
           Accueil

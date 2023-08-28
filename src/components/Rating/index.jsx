@@ -1,19 +1,12 @@
 import React from 'react';
-import styled from 'styled-components';
 import PropTypes from 'prop-types';
+// Import des composants
+import { Stars } from '../../css/Rating';
+// Import des paramètres
 import colors from '../../utils/style/colors';
-
-const Stars = styled.div`
-display:flex;
-justify-content:space-between;
-align-items:center;
-width:196px;
-height:52px;
-`
 
 function Rating({nombreEtoiles}) {
   const notes = [1, 2, 3, 4, 5];
-  // console.log('notes : ' , notes);
   // On balaye les notes de 1 à 5 et on affiche les étoiles
   // L'étoile est rose si le nombre d étoile est supérieur ou égal à la note
   // l'étoile est gris clair si le nombre d étoile est inférieur à la note

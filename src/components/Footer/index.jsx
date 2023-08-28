@@ -1,27 +1,11 @@
 import { useContext }from "react";
-import styled from 'styled-components';
 import { ThemeContext } from '../../utils/context';
-import colors from '../../utils/style/colors';
+// Import des composants
+import { FooterContainer } from '../../css/Footer';
+import { FooterLogo } from '../../css/Footer';
+import { FooterTitle } from '../../css/Footer';
+// Import des paramètres
 import Logo from '../../assets/dark-logo.png';
-
-const FooterContainer = styled.footer`
-  width:100%;
-  height:169px;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: space-around;
-  padding-top:40px;
-  background:${colors.quaternary};
-`
-const FooterLogo = styled.img`
-  height:39.44px;
-  align-self: center;
-`
-const FooterTitle = styled.h5`
-  text-align: center;
-  color:${colors.secondary};
-`
 
 function Footer() {
   // On importe la taille de l'écran du contexte

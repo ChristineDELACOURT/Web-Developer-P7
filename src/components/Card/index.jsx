@@ -1,43 +1,13 @@
 import { useContext }from "react";
 import { ThemeContext } from '../../utils/context';
 import PropTypes from 'prop-types';
-import styled from 'styled-components';
 // Import d une image par défaut
 import DefaultPicture from '../../assets/image_mer_desktop.png';
-
-const CardWrapper = styled.div`
-  padding: 0px;
-  position:relative;
-`
-// On met un léger voile noir pour augmenter le contraste avec le texte
-const CardOmbre = styled.div`
-  height:60px;
-  border-radius: 10px;
-  background: linear-gradient(to bottom, transparent 0%,hsla(0,0%,0%,.8) 100%);
-  position:absolute;
-  bottom:0px;
-  z-index:1;
-`
-
-const CardTitle = styled.h2`
-  width: 200px;
-  color:#ffffff;
-  padding: 10px;
-  font-size: 18px;
-  font-weight: 600;
-  align-self: left;
-  text-decoration:none;
-  position:absolute;
-  bottom:0px;
-`
-
-const CardImage = styled.img`
-  border-radius: 10px;
-  object-fit: cover;
-  align-self: center;
-  position:absolute;
-  z-index:1;
-`
+// Import des composants
+import { CardWrapper } from '../../css/Card';
+import { CardOmbre } from '../../css/Card';
+import { CardTitle } from '../../css/Card';
+import { CardImage } from '../../css/Card';
 
 function Card({ title, cover}) {
   var mobile = useContext(ThemeContext);

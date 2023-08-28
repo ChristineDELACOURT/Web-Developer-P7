@@ -1,28 +1,10 @@
 import React, { useState } from "react";
-import styled from 'styled-components';
 import PropTypes from 'prop-types';
 import colors from '../../utils/style/colors';
-
-const AlbumContainer = styled.div`
-  width:100%;
-  height:415px;
-  display: flex;
-  justify-content:space-between;
-  align-items:center;
-  flex-wrap: wrap;
-  background-size: cover;
-  background-position: center;
-  border-radius: 25px;
-`
-const ChevronLeft = styled.p`
-  margin-left: 20px;
-  font-size: 80px;
-`
-
-const ChevronRight = styled.div`
-margin-right: 20px;
-  font-size: 80px;
-`
+// Import des composants
+import { AlbumContainer } from '../../css/Photos';
+import { ChevronLeft  } from '../../css/Photos';
+import { ChevronRight } from '../../css/Photos';
 
 function Photos({ album }) {
   // l'état de la première photo est 0
@@ -44,7 +26,6 @@ function Photos({ album }) {
   };
   // console.log('nombrePhotos : ' , nombrePhotos)
   var image = album[actuelle];
-  // console.log('image : ' , image)
   
   return ( 
       <AlbumContainer style={{ 
