@@ -13,7 +13,7 @@ const StyledGlobalStyle = createGlobalStyle`
     body {
       max-width:1240px;
       min-width:320px;
-      margin:0% 5%;
+      margin:0% 7%;
       background-color: ${colors.ternary};
       min-height: 100vh;
     }

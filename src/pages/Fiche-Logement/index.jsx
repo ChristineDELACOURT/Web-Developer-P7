@@ -44,7 +44,7 @@ function Logement () {
     <PageContainer>
         <Photos album={logement.pictures} />
         <TitreAvisContainer style={{flexDirection:(mobile.mobile ? 'column' : 'row')}}>
-        <TitreContainer>
+        <TitreContainer style={{width:(mobile.mobile ? '100%' : '70%')}}>
           <Titre>{logement.title}</Titre>
           <SousTitre>{logement.location}</SousTitre>
           <AffichageListe liste={logement.tags}></AffichageListe>

@@ -9,11 +9,11 @@ export const TitreAvisContainer = styled.div`
   width: 100%;
   display: flex;
   justify-content: space-between;
+  gap:16px;
   flex-wrap: wrap;
   margin:25px 0px;
 `
 export const TitreContainer = styled.div`
-  max-width:  70%;
   display: flex;
   flex-direction: column;
   flex-wrap: wrap;

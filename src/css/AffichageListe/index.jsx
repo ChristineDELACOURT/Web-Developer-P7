@@ -5,6 +5,7 @@ export const TagContainer = styled.div`
   width:100%;
   gap:10px;
   display:flex;
+  flex-wrap:wrap;
   flex-direction:flex-start;
 `
 
