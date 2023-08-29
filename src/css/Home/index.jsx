@@ -8,8 +8,12 @@ export const PageContainer = styled.div`
 `
 export const CardLink = styled(Link)`
   display: block;
+  transition: .4s ease-in-out;
+  border-radius:10px;
   &:hover {
     cursor: pointer;
+    transform: scale(1.1);
+    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
   }
 `
 export const CardsContainer = styled.div`
