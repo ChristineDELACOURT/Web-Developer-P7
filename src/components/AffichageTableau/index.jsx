@@ -10,7 +10,7 @@ function AffichageTableau({tableau}) {
   // On importe la taille de l'écran du contexte
   var mobile = useContext(ThemeContext);
     return (
-      <Liste key={tableau[0]}>
+      <Liste key={tableau[0]}  style={{minHeight:(mobile.mobile ? '143.32px' : '189px')}}>
         {tableau.map((equipment) => {
           return (
           <Item key={equipment} style={{fontSize:(mobile.mobile ? '12px' : '17.11px'),

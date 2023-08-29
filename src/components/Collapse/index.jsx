@@ -46,7 +46,7 @@ function Collapse({ title, content}) {
       {(switchDisplay && (contentType === 'string'))? (    
         <Contenu style={{fontSize:(mobile.mobile ? '12px' : '17.11px'),
         lineHeight:(mobile.mobile ? '18px' : '25.67px'),
-        height:(page ===  "/Apropos" ? 'auto' : '209px')
+        minHeight:(page ===  "/Apropos" ? 'auto' : (mobile.mobile ? '103.32px' : '209px'))
       }}>{content}</Contenu>
         ):(<div></div>)   
       }

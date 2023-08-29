@@ -1,7 +1,6 @@
 import styled from 'styled-components';
 
 export const Liste = styled.ul`
-height:189px;
 border-radius:10px;
 list-style-type: none;
 padding: 40px 16px 20px 16px;

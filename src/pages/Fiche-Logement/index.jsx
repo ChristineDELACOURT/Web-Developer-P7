@@ -1,6 +1,5 @@
 import React, { useContext } from 'react'
 import { useParams } from 'react-router-dom';
-import styled from 'styled-components';
 import { ThemeContext } from '../../utils/context';
 // Import des composants
 import AffichageListe from '../../components/AffichageListe';
