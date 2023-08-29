@@ -1,5 +1,8 @@
 import React, { useState } from "react";
 import PropTypes from 'prop-types';
+import { useContext }from "react";
+import { ThemeContext } from '../../utils/context';
+// Import des paramètres
 import colors from '../../utils/style/colors';
 // Import des composants
 import { AlbumContainer } from '../../css/Photos';
@@ -7,6 +10,8 @@ import { ChevronLeft  } from '../../css/Photos';
 import { ChevronRight } from '../../css/Photos';
 
 function Photos({ album }) {
+  // On importe la taille de l'écran du contexte
+  var mobile = useContext(ThemeContext);
   // l'état de la première photo est 0
   const [actuelle, setProchaine] = useState(0); 
   // nombre de photos dans l'album
@@ -33,13 +38,13 @@ function Photos({ album }) {
 
       {(nombrePhotos > 1)? (    
         <ChevronLeft onClick={imagePrecedante}>
-          <i className="fa-solid fa-chevron-left" style={{color:colors.secondary}}></i>
+          <i className="fa-solid fa-chevron-left" style={{color:colors.secondary,fontSize:(mobile.mobile ? '40px' : '80px')}}></i>
         </ChevronLeft>
         ):(<div></div>)   
       }
       {(nombrePhotos > 1)? (    
         <ChevronRight onClick={imageSuivante}>
-          <i className="fa-solid fa-chevron-right" style={{color:colors.secondary}}></i>
+          <i className="fa-solid fa-chevron-right" style={{color:colors.secondary,fontSize:(mobile.mobile ? '40px' : '80px')}}></i>
         </ChevronRight> 
         ):(<div></div>)
       }      

@@ -13,10 +13,8 @@ export const AlbumContainer = styled.div`
 `
 export const ChevronLeft = styled.p`
   margin-left: 20px;
-  font-size: 80px;
 `
 
-export const ChevronRight = styled.div`
-margin-right: 20px;
-  font-size: 80px;
+export const ChevronRight = styled.p`
+  margin-right: 20px;
 `
