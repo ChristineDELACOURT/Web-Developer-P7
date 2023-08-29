@@ -52,7 +52,7 @@ function Photos({ album }) {
         ):(<Vide/>)
       }
       </PhotoContainer>  
-      {(nombrePhotos > 1)? (   
+      {(nombrePhotos > 1 && !mobile.mobile)? (   
         <Compteur>{actuelle + 1}/{nombrePhotos}</Compteur>
         ):(<Vide/>)
       }
