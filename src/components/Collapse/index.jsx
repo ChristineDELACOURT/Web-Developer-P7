@@ -12,6 +12,7 @@ import { Titre } from '../../css/Collapse';
 import { Chevron } from '../../css/Collapse';
 import { ContenuContainer } from '../../css/Collapse';
 import { Contenu } from '../../css/Collapse';
+import { Vide } from '../../css/Collapse';
 import AffichageTableau from '../../components/AffichageTableau';
 
 function Collapse({ title, content}) {
@@ -46,13 +47,13 @@ function Collapse({ title, content}) {
       {(switchDisplay && (contentType === 'string'))? (    
         <Contenu style={{fontSize:(mobile.mobile ? '12px' : '17.11px'),
         lineHeight:(mobile.mobile ? '18px' : '25.67px'),
-        minHeight:(page ===  "/Apropos" ? 'auto' : (mobile.mobile ? '103.32px' : '209px'))
+        minHeight:(page ===  "/Apropos" ? 'auto' : (mobile.mobile ? '83.32px' : '189px'))
       }}>{content}</Contenu>
-        ):(<div></div>)   
+        ):(<Vide/>)   
       }
       {(switchDisplay && (contentType !== 'string'))? (
         <AffichageTableau tableau={content}></AffichageTableau>
-        ):(<div></div>)   
+        ):(<Vide/>)   
       }
       </ContenuContainer>
     </Container>
