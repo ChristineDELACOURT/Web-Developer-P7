@@ -6,8 +6,11 @@ import { ThemeContext } from '../../utils/context';
 import colors from '../../utils/style/colors';
 // Import des composants
 import { AlbumContainer } from '../../css/Photos';
+import { PhotoContainer } from '../../css/Photos';
 import { ChevronLeft  } from '../../css/Photos';
 import { ChevronRight } from '../../css/Photos';
+import { Vide } from '../../css/Collapse';
+import { Compteur } from '../../css/Photos';
 
 function Photos({ album }) {
   // On importe la taille de l'écran du contexte
@@ -35,20 +38,25 @@ function Photos({ album }) {
   return ( 
       <AlbumContainer style={{ 
         backgroundImage:`url("${image}")`}}>
-
+      <PhotoContainer>
       {(nombrePhotos > 1)? (    
         <ChevronLeft onClick={imagePrecedante}>
           <i className="fa-solid fa-chevron-left" style={{color:colors.secondary,fontSize:(mobile.mobile ? '40px' : '80px')}}></i>
         </ChevronLeft>
-        ):(<div></div>)   
+        ):(<Vide/>)   
       }
       {(nombrePhotos > 1)? (    
         <ChevronRight onClick={imageSuivante}>
           <i className="fa-solid fa-chevron-right" style={{color:colors.secondary,fontSize:(mobile.mobile ? '40px' : '80px')}}></i>
         </ChevronRight> 
-        ):(<div></div>)
-      }      
-        </AlbumContainer>
+        ):(<Vide/>)
+      }
+      </PhotoContainer>  
+      {(nombrePhotos > 1)? (   
+        <Compteur>{actuelle + 1}/{nombrePhotos}</Compteur>
+        ):(<Vide/>)
+      }
+      </AlbumContainer>
         );
       }
 
