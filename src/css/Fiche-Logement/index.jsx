@@ -23,11 +23,11 @@ export const AvisContainer = styled.div`
   flex-direction: column;
   justify-content: space-between;
   align-items: center;
-  flex-wrap: no-wrap;
+  flex-wrap: nowrap;
 `
 export const IdentiteContainer = styled.div`
   display: flex;
-  flex-wrap: no-wrap;
+  flex-wrap: nowrap;
   gap: 10px;
   justify-content: space-around;
   align-items: center;

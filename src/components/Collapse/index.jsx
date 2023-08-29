@@ -43,7 +43,7 @@ function Collapse({ title, content}) {
         </Chevron>
       </TitreDescriptionEquipementsContainer>
       
-      <ContenuContainer style={{borderRadius:(page ===  "/Apropos" ? '0px' : '10px')}}>
+      <ContenuContainer style={{borderRadius:(page ===  "/Apropos" ? '0px' : '0px 0px 10px 10px')}}>
       {(switchDisplay && (contentType === 'string'))? (    
         <Contenu style={{fontSize:(mobile.mobile ? '12px' : '17.11px'),
         lineHeight:(mobile.mobile ? '18px' : '25.67px'),

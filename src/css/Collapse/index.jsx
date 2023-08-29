@@ -13,7 +13,7 @@ flex-wrap: wrap;
 export const TitreDescriptionEquipementsContainer = styled.div`
 display:flex;
 justify-content:space-between;
-flex-wrap:no-wrap;
+flex-wrap:nowrap;
 border-radius:10px;
 height:52px;
 background-color:${colors.primary};
@@ -27,7 +27,7 @@ padding:10px 20px;
 `
 export const ContenuContainer = styled.div`
 background-color:${colors.ternary};
-box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+box-shadow: rgba(0, 0, 0, 0.7) 0px 5px 15px;
 position:relative;
 top:-10px;
 z-index:-1;
