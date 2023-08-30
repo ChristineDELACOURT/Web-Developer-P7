@@ -16,5 +16,5 @@ export const CollapseContainer = styled.div`
   flex-wrap: wrap;
   width:80%;
   gap:31px;
-  padding:31px 108px;
+  padding:2.5% 8.7%;
 `
