@@ -1,5 +1,4 @@
-import React, { useContext , useEffect } from 'react'
-import PropTypes from 'prop-types';
+import React, { useContext } from 'react'
 import { useParams , Navigate } from 'react-router-dom';
 import { ThemeContext } from '../../utils/context';
 // Import des composants
@@ -19,7 +18,6 @@ import { Host } from '../../css/Fiche-Logement';
 import { Picture } from '../../css/Fiche-Logement';
 import { DescriptionEquipementsContainer } from '../../css/Fiche-Logement';
 import { CollapseContainer } from '../../css/Fiche-Logement';
-import { Vide } from '../../css/Collapse';
 // Import de la liste des logements
 const logementList = require('../../datas/logementList');
 
@@ -38,11 +36,8 @@ function Logement () {
   // On récupère le logement qui nous intéresse
   if (listeId.indexOf(url) > -1 ) {
   var logement = logementList.find(card => card.id === url); 
-  console.log('logement : ' , logement)
   }
-  console.log('listeId.indexOf(url) : ' , listeId.indexOf(url))
-
-  return (<Vide>
+  return (<>
     {logement ? (
     <PageContainer>
         <Photos album={logement.pictures} />
@@ -77,7 +72,7 @@ function Logement () {
     <Navigate to="/Error" replace={true} />
   )
     }
-    </Vide>
+    </>
   );
 };
 

@@ -20,7 +20,7 @@ function Rating({nombreEtoiles}) {
         nombreEtoiles >= note ? (
           <i key={note.toString()} className="fa-solid fa-star" style={{color:colors.primary,fontSize:(mobile.mobile ? '13px' : '24px')}}></i>
         ) : (
-          <i key={note} className="fa-solid fa-star" style={{color:colors.five,fontSize:(mobile.mobile ? '13px' : '24px')}}></i>
+          <i key={note.toString()} className="fa-solid fa-star" style={{color:colors.five,fontSize:(mobile.mobile ? '13px' : '24px')}}></i>
         )
       )}
     </Stars>

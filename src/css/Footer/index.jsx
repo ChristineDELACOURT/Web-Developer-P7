@@ -12,6 +12,8 @@ export const FooterContainer = styled.footer`
   margin-top:10px;
   padding-top:40px;
   background:${colors.quaternary};
+  position:relative;
+  bottom:0;
 `
 export const FooterLogo = styled.img`
   height:39.44px;

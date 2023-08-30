@@ -13,7 +13,7 @@ function AffichageTableau({tableau}) {
       <Liste key={tableau[0].toString()}  style={{minHeight:(mobile.mobile ? '143.32px' : '189px')}}>
         {tableau.map((equipment) => {
           return (
-          <Item key={equipment} style={{fontSize:(mobile.mobile ? '12px' : '17.11px'),
+          <Item key={equipment.toString()} style={{fontSize:(mobile.mobile ? '12px' : '17.11px'),
           lineHeight:(mobile.mobile ? '18px' : '25.67px')}}>{equipment}</Item>
           );
         })}
