@@ -18,7 +18,7 @@ function Rating({nombreEtoiles}) {
     <Stars style={{width:(mobile.mobile ? '98px' : '196px'),height:(mobile.mobile ? '18px' : '24px')}}>
       {notes.map((note) =>
         nombreEtoiles >= note ? (
-          <i key={note} className="fa-solid fa-star" style={{color:colors.primary,fontSize:(mobile.mobile ? '13px' : '24px')}}></i>
+          <i key={note.toString()} className="fa-solid fa-star" style={{color:colors.primary,fontSize:(mobile.mobile ? '13px' : '24px')}}></i>
         ) : (
           <i key={note} className="fa-solid fa-star" style={{color:colors.five,fontSize:(mobile.mobile ? '13px' : '24px')}}></i>
         )

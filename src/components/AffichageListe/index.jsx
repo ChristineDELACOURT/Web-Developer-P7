@@ -6,10 +6,10 @@ import { TagStyle } from '../../css/AffichageListe';
 
 function AffichageListe({liste}) {
   return (
-    <TagContainer key={liste[0]}>
+    <TagContainer key={liste[0].toString()}>
       {liste.map((tag,index) => {
         return (
-          <TagStyle key={index}>{tag}</TagStyle>
+          <TagStyle key={index.toString()}>{tag}</TagStyle>
         );
       })}
     </TagContainer>

@@ -11,7 +11,8 @@ function Footer() {
   // On importe la taille de l'écran du contexte
   var mobile = useContext(ThemeContext);
   return (
-    <FooterContainer>
+    <FooterContainer style={{position:(mobile.mobile ? 'absolute' : 'relative'),
+    bottom:(mobile.mobile ? '0px' : 'auto')}}>
       <FooterLogo src={Logo}/>
       <FooterTitle style={{fontSize:(mobile.mobile ? '12px' : '24px'),
           lineHeight:(mobile.mobile ? '17.11px' : '34.22px')}}>© 2020 Kasa. All rights reserved

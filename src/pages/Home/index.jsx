@@ -18,7 +18,7 @@ function Home () {
               {logementList.map((card) => {      
         return (
             <CardLink  style={{width:(mobile.mobile ? '335px' : '340px')}}
-            key={card.id} to={`/logement/${card.id}`}>
+            key={card.id.toString()} to={`/logement/${card.id}`}>
               <Card title={card.title} cover={card.cover}  />
             </CardLink>
         );
